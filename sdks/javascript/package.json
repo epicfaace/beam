@@ -1,15 +1,15 @@
 {
-  "name": "--libraryname--",
+  "name": "apache-beam",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/--libraryname--.umd.js",
-  "module": "dist/--libraryname--.es5.js",
-  "typings": "dist/types/--libraryname--.d.ts",
+  "main": "dist/apache-beam.umd.js",
+  "module": "dist/apache-beam.es5.js",
+  "typings": "dist/types/apache-beam.d.ts",
   "files": [
     "dist"
   ],
-  "author": "--username-- <--usermail-->",
+  "author": "Ashwin Ramaswami <aramaswamis@gmail.com>",
   "repository": {
     "type": "git",
     "url": ""
@@ -32,7 +32,6 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "postinstall": "ts-node tools/init",
     "travis-deploy-once": "travis-deploy-once"
   },
   "lint-staged": {
