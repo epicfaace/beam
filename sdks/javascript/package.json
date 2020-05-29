@@ -32,7 +32,9 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prepare": "npm run generate-protos",
+    "generate-protos": "cd model && ./generate_protos.sh"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -116,5 +118,10 @@
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.12.0",
     "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.12.2",
+    "grpc": "^1.24.2",
+    "ts-protoc-gen": "^0.12.0"
   }
 }

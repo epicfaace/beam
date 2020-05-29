@@ -36,6 +36,7 @@ sdks/java/maven-archetypes/examples-java8/src/main/resources/archetype-resources
 **/dist/**/*
 **/distribute-*/**/*
 **/env/**/*
+**/venv/**/*
 **/.mypy_cache
 **/.dmypy.json
 sdks/python/**/*.c
@@ -94,3 +95,7 @@ sdks/python/postcommit_requirements.txt
 
 .pytest_cache
 .pytest_cache/**/*
+
+# JS
+node_modules
+sdks/javascript/models/generated
