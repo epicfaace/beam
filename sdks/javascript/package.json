@@ -120,6 +120,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "@types/google-protobuf": "^3.7.2",
     "google-protobuf": "^3.12.2",
     "grpc": "^1.24.2",
     "ts-protoc-gen": "^0.12.0"
