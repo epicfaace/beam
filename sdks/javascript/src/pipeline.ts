@@ -4,13 +4,33 @@ import {
   Pipeline as Pipeline_
 } from '../model/generated/beam_runner_api_pb'
 
+// TODO: support step names.
+type Step = PTransform
+
 export class Pipeline {
+  /** Steps for this pipeline. */
+  _steps: Step[] = []
+
   constructor(_props?: any) {
     // TODO: add pipelineoptions
     // TODO: CallableWrapperDOFn for map and flatmap
   }
 
-  _serialize() {
+  /**
+   * Add a step to the pipeline.
+   * @param {Step} Step.
+   * @returns {Pipeline_} Serialized pipeline proto
+   */
+  pipe(step: Step) {
+    this._steps.push(step)
+    return this
+  }
+
+  /**
+   * Serializes this pipeline to a runner api proto.
+   * @returns {Pipeline_} Serialized pipeline proto
+   */
+  serialize() {
     const pipeline = new Pipeline_()
     const transform = new PTransform()
     transform.setUniqueName('unique name 1')
@@ -25,7 +45,21 @@ export class Pipeline {
     return pipeline
   }
 
+  /**
+   * Clones this pipeline.
+   * @returns {Pipeline} Cloned pipeline
+   */
+  clone() {
+    const p = new Pipeline()
+    p._steps = [...this._steps]
+    return p
+  }
+
+  /**
+   * Builds this pipeline.
+   * @returns {object} Object representing serialized pipeline
+   */
   build() {
-    return this._serialize().toObject()
+    return this.serialize().toObject()
   }
 }

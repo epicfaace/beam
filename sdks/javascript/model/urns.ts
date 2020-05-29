@@ -7,4 +7,5 @@ export default {
   [StandardPTransforms.Composites.RESHUFFLE]: "beam:transform:reshuffle:v1",
 };
 
-export const CUSTOM_JS_DOFN_URN = "beam:transform:js:v1";
+export const CUSTOM_JS_DOFN_URN = "beam:dofn:js:v1";
+export const CUSTOM_JS_TRANSFORM_URN = "beam:transform:js:v1";

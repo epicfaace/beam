@@ -1,10 +1,7 @@
-import {
-  FunctionSpec,
-  StandardPTransforms,
-  ParDoPayload
-} from '../../model/generated/beam_runner_api_pb'
-import urns, { CUSTOM_JS_DOFN_URN } from '../../model/urns'
-import { PTransform, DoFn } from '../apache-beam'
+import { StandardPTransforms, ParDoPayload } from '../../model/generated/beam_runner_api_pb'
+import urns from '../../model/urns'
+import { PTransform } from './ptransform'
+import { DoFn } from '../specs/dofn'
 
 export class ParDo extends PTransform {
   dofn: DoFn
