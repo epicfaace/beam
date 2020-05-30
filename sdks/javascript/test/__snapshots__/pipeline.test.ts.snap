@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pipeline empty pipeline 1`] = `
+Object {
+  "array": Array [
+    Array [
+      Array [
+        Array [
+          "",
+          Array [
+            undefined,
+            Array [],
+            undefined,
+            undefined,
+            null,
+            Array [],
+          ],
+        ],
+      ],
+    ],
+    Array [
+      "",
+    ],
+    Array [],
+    Array [],
+  ],
+  "arrayIndexOffset_": -1,
+  "convertedPrimitiveFields_": Object {},
+  "messageId_": undefined,
+  "pivot_": 1.7976931348623157e+308,
+  "wrappers_": Object {
+    "1": Object {
+      "array": Array [
+        Array [
+          Array [
+            "",
+            Array [
+              undefined,
+              Array [],
+              undefined,
+              undefined,
+              null,
+              Array [],
+            ],
+          ],
+        ],
+      ],
+      "arrayIndexOffset_": -1,
+      "convertedPrimitiveFields_": Object {},
+      "messageId_": undefined,
+      "pivot_": 1.7976931348623157e+308,
+      "wrappers_": Object {
+        "1": Object {
+          "arrClean": true,
+          "arr_": Array [
+            Array [
+              "",
+              Array [
+                undefined,
+                Array [],
+                undefined,
+                undefined,
+                null,
+                Array [],
+              ],
+            ],
+          ],
+          "map_": Object {
+            "": Object {
+              "key": "",
+              "value": Array [
+                undefined,
+                Array [],
+                undefined,
+                undefined,
+                null,
+                Array [],
+              ],
+              "valueWrapper": Object {
+                "array": Array [
+                  undefined,
+                  Array [],
+                  undefined,
+                  undefined,
+                  null,
+                  Array [],
+                ],
+                "arrayIndexOffset_": -1,
+                "convertedPrimitiveFields_": Object {},
+                "messageId_": undefined,
+                "pivot_": 1.7976931348623157e+308,
+                "wrappers_": null,
+              },
+            },
+          },
+          "valueCtor_": [Function],
+        },
+      },
+    },
+  },
+}
+`;

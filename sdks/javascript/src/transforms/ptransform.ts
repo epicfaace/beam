@@ -1,7 +1,7 @@
 import { FunctionSpec } from '../specs/function-spec'
 import { CUSTOM_JS_TRANSFORM_URN } from '../model/urns'
-import { Pipeline, PValueish } from 'pipeline'
-import { PValue } from 'pcollection'
+import { Pipeline, PValueish } from '../pipeline'
+import { PValue } from '../pcollection'
 
 export class PTransform extends FunctionSpec {
   constructor(_props?: any) {

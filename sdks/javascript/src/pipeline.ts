@@ -29,6 +29,21 @@ class AppliedPTransform {
   addPart(part: AppliedPTransform) {
     this.parts.push(part);
   }
+
+  serialize() {
+    const transform = new beam_runner_api_pb.PTransform();
+    transform.setUniqueName(this.fullLabel);
+    if (this.transform) {
+      transform.setSpec(this.transform.serialize());
+      // TODO:
+      // setInputs
+      // setOutputs
+    } else {
+      // is root transform
+    }
+    transform.setSubtransformsList(this.parts.map(part => part.fullLabel));
+    return transform;
+  }
 }
 
 export class Pipeline {
@@ -63,10 +78,11 @@ export class Pipeline {
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
     }
-    this.appliedLabels.add(fullLabel);
     const inputs = transform.extractInputPValues(pvalueish);
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
-    this._currentTransform.addPart(transform);
+
+    this.appliedLabels.add(fullLabel);
+    this._currentTransform().addPart(appliedPTransform);
     this.transformsStack.push(appliedPTransform)
     return this;
   }
@@ -76,15 +92,12 @@ export class Pipeline {
    * @returns {Pipeline_} Serialized pipeline proto
    */
   serialize() {
-    const pipeline = new beam_runner_api_pb.Pipeline()
-    const transform = new beam_runner_api_pb.PTransform()
-    transform.setUniqueName('unique name 1')
-
-    const components = new beam_runner_api_pb.Components()
-    components.getTransformsMap().set('t', transform)
-    pipeline.setComponents(components)
-    const id = String(Math.random())
-    pipeline.setRootTransformIdsList([id])
+    const pipeline = new beam_runner_api_pb.Pipeline();
+    
+    const components = new beam_runner_api_pb.Components();
+    components.getTransformsMap().set(this._rootTransform().fullLabel, this._rootTransform().serialize());
+    pipeline.setComponents(components);
+    pipeline.setRootTransformIdsList([this._rootTransform().fullLabel]);
 
     // StandardPTransforms.Primitives.MAP_WINDOWS
     return pipeline
