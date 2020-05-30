@@ -30,7 +30,7 @@ First, follow this one-time setup:
 
 To generate the code:
 
-1. Navigate to this directory (`sdks/javascript`).
-1. `npm run `
+1. Navigate to `sdks/javascript`
+1. `npm run generate-proto`
 
 This code automatically runs on postinstall, too.

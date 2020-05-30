@@ -1,5 +1,5 @@
 import { FunctionSpec } from './function-spec'
-import { CUSTOM_JS_DOFN_URN } from '../../model/urns'
+import { CUSTOM_JS_DOFN_URN } from '../model/urns'
 
 export class DoFn extends FunctionSpec {
   constructor(_props?: any) {

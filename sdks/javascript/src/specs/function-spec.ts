@@ -1,4 +1,4 @@
-import { FunctionSpec as FunctionSpec_ } from '../../model/generated/beam_runner_api_pb'
+import { FunctionSpec as FunctionSpec_ } from '../model/generated/beam_runner_api_pb'
 
 /**
  * A base class for classes that can be serialized to

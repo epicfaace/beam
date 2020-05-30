@@ -98,4 +98,4 @@ sdks/python/postcommit_requirements.txt
 
 # JS
 node_modules
-sdks/javascript/models/generated
+sdks/javascript/src/model/generated

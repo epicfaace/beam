@@ -1,5 +1,5 @@
-import { StandardPTransforms, ParDoPayload } from '../../model/generated/beam_runner_api_pb'
-import urns from '../../model/urns'
+import { StandardPTransforms, ParDoPayload } from '../model/generated/beam_runner_api_pb'
+import urns from '../model/urns'
 import { PTransform } from './ptransform'
 import { DoFn } from '../specs/dofn'
 

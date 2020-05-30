@@ -2,7 +2,7 @@ import {
   PTransform,
   Components,
   Pipeline as Pipeline_
-} from '../model/generated/beam_runner_api_pb'
+} from './model/generated/beam_runner_api_pb'
 
 // TODO: support step names.
 type Step = PTransform

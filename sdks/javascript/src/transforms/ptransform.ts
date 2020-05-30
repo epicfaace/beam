@@ -1,5 +1,5 @@
 import { FunctionSpec } from '../specs/function-spec'
-import { CUSTOM_JS_TRANSFORM_URN } from '../../model/urns'
+import { CUSTOM_JS_TRANSFORM_URN } from '../model/urns'
 
 export class PTransform extends FunctionSpec {
   constructor(_props?: any) {
