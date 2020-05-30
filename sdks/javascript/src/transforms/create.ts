@@ -10,4 +10,8 @@ export class Create extends PTransform {
     super()
     this.values = values
   }
+
+  label() {
+    return "Create";
+  }
 }
