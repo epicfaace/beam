@@ -40,11 +40,11 @@ export class AppliedPTransform {
     if (this.transform) {
       transform.setSpec(this.transform.serialize());
       for (let i in this.inputs) {
-        transform.getInputsMap().set(i, this.inputs[i].name);
+        transform.getInputsMap().set(i, this.inputs[i].ref);
       }
       for (let i in this.outputs) {
         // TODO: handle multiple outputs
-        transform.getOutputsMap().set("None", this.outputs[i].name);
+        transform.getOutputsMap().set("None", this.outputs[i].ref);
       }
       // TODO:
       // setInputs

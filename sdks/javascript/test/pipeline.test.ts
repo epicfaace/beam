@@ -31,7 +31,7 @@ describe('Pipeline', () => {
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
-  it.only('with custom ptransform', () => {
+  it('with custom ptransform', () => {
     let p = new Pipeline();
         
     class CustomTransform extends PTransform {

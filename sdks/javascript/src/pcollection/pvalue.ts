@@ -7,10 +7,11 @@ import { PTransform } from '../transforms';
  */
 export class PValue {
   pipeline: Pipeline;
-  name: string;
+  ref: string;
+  
   constructor(pipeline: Pipeline) {
     this.pipeline = pipeline;
-    this.name = pipeline.context.createUniqueRef(this);
+    this.ref = pipeline.context.createUniqueRef(this);
   }
 
   /**

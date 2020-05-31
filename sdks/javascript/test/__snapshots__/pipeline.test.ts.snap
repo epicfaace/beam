@@ -40,7 +40,28 @@ Object {
   "components": Object {
     "codersMap": Array [],
     "environmentsMap": Array [],
-    "pcollectionsMap": Array [],
+    "pcollectionsMap": Array [
+      Array [
+        "ref_PCollection_PCollection_4",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_4",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_8",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_8",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+    ],
     "transformsMap": Array [
       Array [
         "ref_AppliedPTransform_AppliedPTransform_1",
@@ -152,8 +173,81 @@ Object {
   "components": Object {
     "codersMap": Array [],
     "environmentsMap": Array [],
-    "pcollectionsMap": Array [],
+    "pcollectionsMap": Array [
+      Array [
+        "ref_PCollection_PCollection_10",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_10",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_12",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_12",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_4",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_4",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_6",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_6",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_8",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_8",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+    ],
     "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_A_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "A",
+        },
+      ],
       Array [
         "ref_AppliedPTransform_AppliedPTransform_1",
         Object {
@@ -168,13 +262,121 @@ Object {
             "urn": "beam:transform:js:v1",
           },
           "subtransformsList": Array [
-            "ref_ParDo_A_2",
-            "ref_ParDo_B-1_5",
-            "ref_ParDo_C-1_7",
-            "ref_ParDo_B-2_9",
-            "ref_ParDo_C-2_11",
+            "ref_AppliedPTransform_A_2",
+            "ref_AppliedPTransform_B-1_5",
+            "ref_AppliedPTransform_C-1_7",
+            "ref_AppliedPTransform_B-2_9",
+            "ref_AppliedPTransform_C-2_11",
           ],
           "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_B-1_5",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_6",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "B-1",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_B-2_9",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_10",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "B-2",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_C-1_7",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_6",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_8",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "C-1",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_C-2_11",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_10",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_12",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "C-2",
         },
       ],
     ],
@@ -193,7 +395,18 @@ Object {
   "components": Object {
     "codersMap": Array [],
     "environmentsMap": Array [],
-    "pcollectionsMap": Array [],
+    "pcollectionsMap": Array [
+      Array [
+        "ref_PCollection_PCollection_4",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_4",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+    ],
     "transformsMap": Array [
       Array [
         "ref_AppliedPTransform_AppliedPTransform_1",
@@ -209,9 +422,31 @@ Object {
             "urn": "beam:transform:js:v1",
           },
           "subtransformsList": Array [
-            "ref_ParDo_custom label_2",
+            "ref_AppliedPTransform_custom label_2",
           ],
           "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom label_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "custom label",
         },
       ],
     ],

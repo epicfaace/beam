@@ -91,6 +91,9 @@ export class Pipeline {
     for (let ref in this.context.transforms) {
       components.getTransformsMap().set(ref, this.context.transforms[ref].serialize());
     }
+    for (let ref in this.context.pcollections) {
+      components.getPcollectionsMap().set(ref, this.context.pcollections[ref].serialize());
+    }
     // TODO: other parts of context, like pcollections
     pipeline.setComponents(components);
     pipeline.setRootTransformIdsList([this._rootTransform().fullLabel]);
