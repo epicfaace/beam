@@ -18,7 +18,7 @@ Object {
             "payload": "function (_input) {
         throw new Error(\\"Must be implemented by subclasses\\");
     }",
-            "urn": "beam:transform:js:v1",
+            "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [],
           "uniqueName": "",
@@ -74,7 +74,7 @@ Object {
             "payload": "function (_input) {
         throw new Error(\\"Must be implemented by subclasses\\");
     }",
-            "urn": "beam:transform:js:v1",
+            "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_test_2",
@@ -101,7 +101,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -127,7 +127,7 @@ Object {
                 return pcoll.apply({ transform: new index_1.ParDo(new index_1.DoFn()), label: \\"nested subtransform 1\\" });
                 // .apply({ transform: new ParDo(new DoFn()), label: \\"nested subtransform 2\\"});
             }",
-            "urn": "beam:transform:js:v1",
+            "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_custom transform/nested subtransform 1_7",
@@ -148,7 +148,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -239,7 +239,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -259,7 +259,7 @@ Object {
             "payload": "function (_input) {
         throw new Error(\\"Must be implemented by subclasses\\");
     }",
-            "urn": "beam:transform:js:v1",
+            "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_A_2",
@@ -289,7 +289,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -316,7 +316,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -343,7 +343,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -370,7 +370,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",
@@ -419,7 +419,7 @@ Object {
             "payload": "function (_input) {
         throw new Error(\\"Must be implemented by subclasses\\");
     }",
-            "urn": "beam:transform:js:v1",
+            "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_custom label_2",
@@ -440,7 +440,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:js:v1,,function () {
+            "payload": "beam:dofn:javascript:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
     }",
             "urn": "beam:transform:pardo:v1",

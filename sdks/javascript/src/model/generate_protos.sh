@@ -14,4 +14,5 @@ protoc \
     -I../../../../model/interactive/src/main/proto \
     -I../../../../model/pipeline/src/main/proto \
     -I../../../../model/job-management/src/main/proto \
+    -I./javascript_sdk.proto
     ../../../../model/*/src/main/proto/*.proto

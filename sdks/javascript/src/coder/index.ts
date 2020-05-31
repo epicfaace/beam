@@ -16,27 +16,31 @@
  * limitations under the License.
  */
 
-import { FunctionSpec } from './function-spec'
-import { CUSTOM_JS_DOFN_URN } from '../model/urns'
+import { Coder as Coder_, MergeStatus, AccumulationMode, OutputTime, ClosingBehavior, OnTimeBehavior, Trigger } from '../model/generated/beam_runner_api_pb';
+import { FunctionSpec } from '../specs/function-spec';
+import urns from '../model/urns';
 
-export class DoFn extends FunctionSpec {
-  constructor(_props?: any) {
-    super()
-    // TODO: allow passing in function here.
-  }
-
+class CoderSpec extends FunctionSpec {
   _urn() {
-    return CUSTOM_JS_DOFN_URN
+    return urns.StandardCoders.Enum.STRING_UTF8;
   }
 
   _payload() {
-    // Call function by doing new Function("return " + this.toString())()(args)
-    return this.process.toString();
+    return "";
   }
+}
 
-  process(): any {
-    throw new Error('Needs to be implemented in subclasses')
+export default class Coder {
+  spec: CoderSpec;
+
+  constructor() {
+    this.spec = new CoderSpec();
   }
-
-  // TODO: add setup, start_bundle, finish_bundle, teardown.
+  
+  serialize() {
+    const pb = new Coder_();
+    pb.setSpec(this.spec.serialize());
+    // pb.setComponentCoderIdsList([]); // TODO fix this
+    return pb;
+  }
 }
