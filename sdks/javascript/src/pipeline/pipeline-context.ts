@@ -19,6 +19,7 @@
 import { AppliedPTransform } from './applied-ptransform';
 import { PCollection } from '../pcollection';
 import { Windowing } from '../windowing';
+import { Coder } from '../coder';
 export class PipelineContext {
   counter: number = 0;
   namespace: string = "ref";
@@ -27,7 +28,9 @@ export class PipelineContext {
 
   pcollections: {[x: string]: PCollection} = {};
 
-  windowingStrategies: {[x: string]: Windowing} = {};  
+  windowingStrategies: {[x: string]: Windowing} = {};
+
+  coders: {[x: string]: Coder} = {};
 
   // TODO:
   // windowing_strategies
@@ -46,7 +49,10 @@ export class PipelineContext {
       this.pcollections[ref] = object;
     } else if (object instanceof Windowing) {
       this.windowingStrategies[ref] = object;
+    } else if (object instanceof Coder) {
+      this.coders[ref] = object;
     }
+    // PValues?
     // TODO: other instances.
     return ref;
   }

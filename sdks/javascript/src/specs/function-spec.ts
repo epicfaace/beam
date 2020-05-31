@@ -37,7 +37,7 @@ export class FunctionSpec {
    * Get the payload of this object.
    * @return {string} The object's payload.
    */
-  _payload(): string {
+  _payload(): string | null {
     throw new Error('Needs to be implemented in subclasses')
   }
 
@@ -48,7 +48,9 @@ export class FunctionSpec {
   serialize() {
     const spec = new FunctionSpec_()
     spec.setUrn(this._urn())
-    spec.setPayload(this._payload())
+    if (this._payload() !== null) {
+      spec.setPayload(this._payload() as string);
+    }
     return spec
   }
 }

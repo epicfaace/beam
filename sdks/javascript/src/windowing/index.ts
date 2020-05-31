@@ -24,7 +24,7 @@ import { GlobalWindowCoder } from '../coder/global';
 
 class WindowFunction extends FunctionSpec {
   _payload() {
-    return "";
+    return null;
   }
 
   getWindowCoder() {

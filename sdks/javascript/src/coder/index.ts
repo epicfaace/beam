@@ -20,17 +20,15 @@ import { Coder as Coder_ } from '../model/generated/beam_runner_api_pb';
 import { FunctionSpec } from '../specs/function-spec';
 
 export class CoderSpec extends FunctionSpec {
-  _urn() {
-    return "";
-  }
-
   _payload() {
-    return "";
+    return null;
   }
 }
 
 export class Coder {
   spec: CoderSpec = new CoderSpec();
+
+  ref: string = "";
   
   serialize() {
     const pb = new Coder_();

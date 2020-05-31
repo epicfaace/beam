@@ -82,6 +82,9 @@ export class Pipeline {
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
     appliedPTransform.ref = this.context.createUniqueRef(appliedPTransform, fullLabel);
 
+    // Add coder to registry
+    transform.getCoder().ref = this.context.createUniqueRef(transform.getCoder());
+
     this.appliedLabels.add(fullLabel);
     this._currentTransform().addPart(appliedPTransform);
     this.transformsStack.push(appliedPTransform);
@@ -115,6 +118,9 @@ export class Pipeline {
     }
     for (let ref in this.context.windowingStrategies) {
       components.getWindowingStrategiesMap().set(ref, this.context.windowingStrategies[ref].serialize());
+    }
+    for (let ref in this.context.coders) {
+      components.getCodersMap().set(ref, this.context.coders[ref].serialize());
     }
     // TODO: other parts of context, like coders
     pipeline.setComponents(components);
