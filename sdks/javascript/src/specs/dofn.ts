@@ -7,13 +7,13 @@ export class DoFn extends FunctionSpec {
     // TODO: allow passing in function here.
   }
 
-  urn() {
+  _urn() {
     return CUSTOM_JS_DOFN_URN
   }
 
-  payload() {
+  _payload() {
     // Call function by doing new Function("return " + this.toString())()(args)
-    return this.toString()
+    return this.process.toString();
   }
 
   process(): any {

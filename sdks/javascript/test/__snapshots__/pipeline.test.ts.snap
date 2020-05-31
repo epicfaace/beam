@@ -1,102 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pipeline empty pipeline 1`] = `
+exports[`Pipeline empty pipeline with single root transform 1`] = `
 Object {
-  "array": Array [
-    Array [
+  "components": Object {
+    "codersMap": Array [],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [],
+    "transformsMap": Array [
       Array [
-        Array [
-          "",
-          Array [
-            undefined,
-            Array [],
-            undefined,
-            undefined,
-            null,
-            Array [],
-          ],
-        ],
-      ],
-    ],
-    Array [
-      "",
-    ],
-    Array [],
-    Array [],
-  ],
-  "arrayIndexOffset_": -1,
-  "convertedPrimitiveFields_": Object {},
-  "messageId_": undefined,
-  "pivot_": 1.7976931348623157e+308,
-  "wrappers_": Object {
-    "1": Object {
-      "array": Array [
-        Array [
-          Array [
-            "",
-            Array [
-              undefined,
-              Array [],
-              undefined,
-              undefined,
-              null,
-              Array [],
-            ],
-          ],
-        ],
-      ],
-      "arrayIndexOffset_": -1,
-      "convertedPrimitiveFields_": Object {},
-      "messageId_": undefined,
-      "pivot_": 1.7976931348623157e+308,
-      "wrappers_": Object {
-        "1": Object {
-          "arrClean": true,
-          "arr_": Array [
-            Array [
-              "",
-              Array [
-                undefined,
-                Array [],
-                undefined,
-                undefined,
-                null,
-                Array [],
-              ],
-            ],
-          ],
-          "map_": Object {
-            "": Object {
-              "key": "",
-              "value": Array [
-                undefined,
-                Array [],
-                undefined,
-                undefined,
-                null,
-                Array [],
-              ],
-              "valueWrapper": Object {
-                "array": Array [
-                  undefined,
-                  Array [],
-                  undefined,
-                  undefined,
-                  null,
-                  Array [],
-                ],
-                "arrayIndexOffset_": -1,
-                "convertedPrimitiveFields_": Object {},
-                "messageId_": undefined,
-                "pivot_": 1.7976931348623157e+308,
-                "wrappers_": null,
-              },
-            },
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "[object Object]",
+            "urn": "beam:transform:js:v1",
           },
-          "valueCtor_": [Function],
+          "subtransformsList": Array [],
+          "uniqueName": "ref_AppliedPTransform_AppliedPTransform_1",
         },
-      },
-    },
+      ],
+    ],
+    "windowingStrategiesMap": Array [],
   },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
+}
+`;
+
+exports[`Pipeline pipeline with root + subtransforms 1`] = `
+Object {
+  "components": Object {
+    "codersMap": Array [],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [],
+    "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "[object Object]",
+            "urn": "beam:transform:js:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_custom label_2",
+          ],
+          "uniqueName": "ref_AppliedPTransform_AppliedPTransform_1",
+        },
+      ],
+    ],
+    "windowingStrategiesMap": Array [],
+  },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
 }
 `;

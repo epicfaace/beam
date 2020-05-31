@@ -1,4 +1,4 @@
-export { Pipeline } from '../pipeline'
+export { Pipeline } from '../core/pipeline'
 export { ParDo } from './pardo'
 export { PTransform } from './ptransform'
 export { Create } from './create'

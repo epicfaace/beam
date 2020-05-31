@@ -1,4 +1,4 @@
-import { Pipeline } from 'pipeline';
+import { Pipeline } from 'core/pipeline';
 import beam_runner_api_pb from "../model/generated/beam_runner_api_pb";
 
 /**
@@ -9,12 +9,13 @@ export class PValue {
   name: string;
   constructor(pipeline: Pipeline) {
     this.pipeline = pipeline;
-    this.name = String(Math.random());
+    this.name = pipeline.context.createUniqueRef(this);
   }
 
-  apply(...args) {
-    return this.pipeline.apply(this, ...args)
-  }
+  // apply(...args) {
+  //   args.splice(1, 0, this);
+  //   return this.pipeline.apply(...args)
+  // }
 }
 
 /**

@@ -1,61 +1,28 @@
-import beam_runner_api_pb from './model/generated/beam_runner_api_pb'
-import { PTransform } from 'transforms/ptransform'
+import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
+import { PTransform } from '../transforms/ptransform'
 import { PValue } from 'pcollection'
-
-
-// TODO: support step names.
+import { PipelineContext } from './pipeline-context';
+import { AppliedPTransform } from './applied-ptransform';
 
 export type PValueish = PValue | Pipeline
 
-/*
- * A transform node representing an instance of applying a PTransform
- * (used internally by Pipeline for bookkeeping purposes).
- */
-class AppliedPTransform {
-  // TODO: should inputs be PBegin | PCollection ?
-  parent?: AppliedPTransform;
-  transform?: PTransform;
-  fullLabel: string;
-  inputs: PValue[];
-  parts: AppliedPTransform[] = [];
-
-  constructor(parent: AppliedPTransform | undefined, transform: PTransform | undefined, fullLabel: string, inputs: PValue[]) {
-    this.parent = parent;
-    this.transform = transform;
-    this.fullLabel = fullLabel;
-    this.inputs = inputs;
-  }
-
-  addPart(part: AppliedPTransform) {
-    this.parts.push(part);
-  }
-
-  serialize() {
-    const transform = new beam_runner_api_pb.PTransform();
-    transform.setUniqueName(this.fullLabel);
-    if (this.transform) {
-      transform.setSpec(this.transform.serialize());
-      // TODO:
-      // setInputs
-      // setOutputs
-    } else {
-      // is root transform
-    }
-    transform.setSubtransformsList(this.parts.map(part => part.fullLabel));
-    return transform;
-  }
-}
-
 export class Pipeline {
   /** Steps for this pipeline. */
-  transformsStack: AppliedPTransform[] = [new AppliedPTransform(undefined, undefined, "", [])]
+  transformsStack: AppliedPTransform[] = [];
 
   /** Set of transform labels applied to the pipeline. */
   appliedLabels: Set<string> = new Set();
 
+  /** Pipeline context -- used for generating unique refs. */
+  context: PipelineContext = new PipelineContext();
+
   constructor(_props?: any) {
     // TODO: add pipelineoptions
     // TODO: CallableWrapperDOFn for map and flatmap
+
+    const rootTransform = new AppliedPTransform(undefined, new PTransform(), "", []);
+    rootTransform.fullLabel = this.context.createUniqueRef(rootTransform);
+    this.transformsStack.push(rootTransform);
   }
 
   _currentTransform() {
@@ -74,7 +41,7 @@ export class Pipeline {
    * @returns {Pipeline_} Serialized pipeline proto
    */
   apply(transform: PTransform, label?: string, pvalueish?: PValueish) {
-    const fullLabel = this._currentTransform().fullLabel + "_" + (label || String(Math.random));
+    const fullLabel = this.context.createUniqueRef(this._currentTransform(), label);
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
     }
@@ -93,7 +60,7 @@ export class Pipeline {
    */
   serialize() {
     const pipeline = new beam_runner_api_pb.Pipeline();
-    
+
     const components = new beam_runner_api_pb.Components();
     components.getTransformsMap().set(this._rootTransform().fullLabel, this._rootTransform().serialize());
     pipeline.setComponents(components);
