@@ -13,18 +13,20 @@ describe('Pipeline', () => {
   });
   it('with one transform', () => {
     let p = new Pipeline();
-    p.apply(new ParDo(new DoFn()), "custom label");
+    p.apply({ transform: new ParDo(new DoFn()), label: "custom label"});
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   it('with multiple subtransforms', () => {
-    let p = new Pipeline()
-      .apply(new ParDo(new DoFn()), "A");
+    let p = new Pipeline();
     
-    p.apply(new ParDo(new DoFn()), "B-1")
-      .apply(new ParDo(new DoFn()), "C-1");
+    let pcoll = p.apply({ transform: new ParDo(new DoFn()), label: "A" });
+    
+      pcoll.apply({ transform: new ParDo(new DoFn()), label: "B-1"})
+      .apply({ transform: new ParDo(new DoFn()), label: "C-1"});
 
-    p.apply(new ParDo(new DoFn()), "B-2")
-      .apply(new ParDo(new DoFn()), "C-2");
+      pcoll.apply({ transform: new ParDo(new DoFn()), label: "B-2"})
+      .apply({ transform: new ParDo(new DoFn()), label: "C-2"});
+    // console.error(pcoll.serialize().toObject());
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   // it('with pipeline operator', () => {

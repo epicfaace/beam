@@ -7,7 +7,6 @@ import { PValue } from "../pcollection";
  * (used internally by Pipeline for bookkeeping purposes).
  */
 export class AppliedPTransform {
-  // TODO: should inputs be PBegin | PCollection ?
   parent?: AppliedPTransform;
   transform?: PTransform;
   fullLabel: string;

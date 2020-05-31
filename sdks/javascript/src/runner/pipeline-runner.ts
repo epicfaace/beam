@@ -1,7 +1,8 @@
 import { PTransform, Pipeline } from '../transforms';
 import { PipelineOptions } from '../pipeline/pipeline-options';
-import { PValue } from '../pcollection';
 import { AppliedPTransform } from '../pipeline/applied-ptransform';
+import { PValueish } from '../pipeline';
+import { PBegin, PValue } from '../pcollection/pvalue';
 
 /**
  * A runner of a pipeline object.
@@ -25,7 +26,7 @@ export class PipelineRunner {
   async run(transform: PTransform | Pipeline, options: PipelineOptions) {
     const p = new Pipeline(this, options);
     if (transform instanceof PTransform) {
-      p.apply(transform);
+      p.apply({transform});
     }
     return p.run();
   }
@@ -44,11 +45,12 @@ export class PipelineRunner {
    * to override this method to create custom apply behavior for different
    * types of transforms.
    * @param {PTransform} transform PTransform to apply
-   * @param {PValue} input Input for the PTransform
+   * @param {PValue} pvalueish Input for the PTransform
    * @param {PipelineOptions} options Pipeline options
    */
-  apply(transform: PTransform, input?: PValue, _options?: PipelineOptions) {
-    return transform.expand(input);
+  apply({transform, pvalueish}: {transform: PTransform, pvalueish: PValueish, options?: PipelineOptions}) {
+    const pvalue: PValue = pvalueish instanceof Pipeline ? new PBegin(pvalueish) : pvalueish;
+    return transform.expand(pvalue);
   }
 
   async runTransform(_transformNode: AppliedPTransform, _options?: PipelineOptions) {

@@ -1,6 +1,6 @@
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
-import { PValue } from '../pcollection'
+import { PValue, PBegin } from '../pcollection/pvalue'
 import { PipelineContext } from './pipeline-context';
 import { AppliedPTransform } from './applied-ptransform';
 import { PipelineOptions } from './pipeline-options';
@@ -42,6 +42,10 @@ export class Pipeline {
     return this.transformsStack[0];
   }
 
+  begin() {
+    return this.apply({ transform: new PTransform(), pvalueish: new PBegin(this)})
+  }
+
   /**
    * Add a step to the pipeline.
    * @param {PTransform} PTransform.
@@ -49,7 +53,7 @@ export class Pipeline {
    * @param {PValue} Input for the PTransform, typically a PCollection.
    * @returns {Pipeline_} Serialized pipeline proto
    */
-  apply(transform: PTransform, label?: string, pvalueish?: PValueish) {
+  apply({transform, label, pvalueish}: {transform: PTransform, label?: string, pvalueish?: PValueish}) {
     const fullLabel = this.context.createUniqueRef(this._currentTransform(), label);
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
@@ -59,8 +63,14 @@ export class Pipeline {
 
     this.appliedLabels.add(fullLabel);
     this._currentTransform().addPart(appliedPTransform);
-    this.transformsStack.push(appliedPTransform)
-    return this;
+    this.transformsStack.push(appliedPTransform);
+
+    const pvalueishResult = this.runner.apply({
+      transform,
+      pvalueish: pvalueish || this,
+      options: this.options
+    });
+    return pvalueishResult;
   }
 
   /**

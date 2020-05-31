@@ -1,31 +1,12 @@
-import { Pipeline } from 'core/pipeline';
 import beam_runner_api_pb from "../model/generated/beam_runner_api_pb";
-
-/**
- * Base class for PCollection.
- */
-export class PValue {
-  pipeline: Pipeline;
-  name: string;
-  constructor(pipeline: Pipeline) {
-    this.pipeline = pipeline;
-    this.name = pipeline.context.createUniqueRef(this);
-  }
-
-  // apply(...args) {
-  //   args.splice(1, 0, this);
-  //   return this.pipeline.apply(...args)
-  // }
-}
-
-export class PBegin extends PValue {
-  
-}
+import { PValue } from './pvalue';
 
 /**
  * A multiple values (potentially huge) container.
  */
 export class PCollection extends PValue {
+  bounded = true;
+  
   serialize() {
     let pb = new beam_runner_api_pb.PCollection();
     pb.setUniqueName(this.name); // 14Create/Impulse.None

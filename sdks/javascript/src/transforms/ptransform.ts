@@ -1,7 +1,7 @@
 import { FunctionSpec } from '../specs/function-spec'
 import { CUSTOM_JS_TRANSFORM_URN } from '../model/urns'
 import { Pipeline, PValueish } from '../pipeline'
-import { PValue } from '../pcollection'
+import { PValue } from '../pcollection/pvalue'
 
 export class PTransform extends FunctionSpec {
   constructor(_props?: any) {
@@ -21,7 +21,7 @@ export class PTransform extends FunctionSpec {
     throw new Error("Must be implemented by subclasses");
   }
 
-  expand(_input?: PValue) {
+  expand(_input: PValue): PValue {
     throw new Error("Must be implemented by subclasses");
   }
 

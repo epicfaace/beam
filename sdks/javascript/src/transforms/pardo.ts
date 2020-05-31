@@ -2,6 +2,8 @@ import { StandardPTransforms, ParDoPayload } from '../model/generated/beam_runne
 import urns from '../model/urns'
 import { PTransform } from './ptransform'
 import { DoFn } from '../specs/dofn'
+import { PCollection } from '../pcollection'
+import { PValue } from '../pcollection/pvalue'
 
 export class ParDo extends PTransform {
   dofn: DoFn
@@ -19,5 +21,9 @@ export class ParDo extends PTransform {
     const payload = new ParDoPayload()
     payload.setDoFn(this.dofn.serialize())
     return payload.toString()
+  }
+
+  expand(input: PValue) {
+    return new PCollection(input.pipeline);
   }
 }
