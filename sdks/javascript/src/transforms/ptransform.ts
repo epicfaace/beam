@@ -19,10 +19,10 @@ export class PTransform extends FunctionSpec {
   }
 
   label() {
-    throw new Error("Must be implemented by subclasses");
+    return this.constructor.name;
   }
 
-  expand(_input: PValue): PValue {
+  expand(_input: PValueish): PValue {
     throw new Error("Must be implemented by subclasses");
   }
 

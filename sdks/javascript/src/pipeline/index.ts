@@ -30,7 +30,8 @@ export class Pipeline {
     this.options = options || new PipelineOptions();
 
     const rootTransform = new AppliedPTransform(undefined, new PTransform(), "", []);
-    rootTransform.fullLabel = this.context.createUniqueRef(rootTransform);
+    rootTransform.fullLabel = "";
+    rootTransform.ref = this.context.createUniqueRef(rootTransform);
     this.transformsStack.push(rootTransform);
   }
 
@@ -54,15 +55,16 @@ export class Pipeline {
    * @returns {Pipeline_} Serialized pipeline proto
    */
   apply({transform, label, pvalueish}: {transform: PTransform, label?: string, pvalueish?: PValueish}) {
-    const fullLabel = this.context.createUniqueRef(this._currentTransform(), label);
+    const fullLabel = [this._currentTransform().fullLabel, (label || transform.label())].filter(e => e !== "").join("/");
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
     }
     const inputs = transform.extractInputPValues(pvalueish);
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
+    appliedPTransform.ref = this.context.createUniqueRef(transform, fullLabel);
 
     this.appliedLabels.add(fullLabel);
-    this._currentTransform().addPart(appliedPTransform);
+    this._rootTransform().addPart(appliedPTransform);
     this.transformsStack.push(appliedPTransform);
 
     const pvalueResult = this.runner.apply({
@@ -72,6 +74,8 @@ export class Pipeline {
     });
 
     appliedPTransform.addOutput(pvalueResult);
+
+    this.transformsStack.pop();
 
     return pvalueResult;
   }
@@ -84,9 +88,10 @@ export class Pipeline {
     const pipeline = new beam_runner_api_pb.Pipeline();
 
     const components = new beam_runner_api_pb.Components();
-    for (let transform of this.transformsStack) {
-      components.getTransformsMap().set(transform.fullLabel, transform.serialize());
+    for (let ref in this.context.transforms) {
+      components.getTransformsMap().set(ref, this.context.transforms[ref].serialize());
     }
+    // TODO: other parts of context, like pcollections
     pipeline.setComponents(components);
     pipeline.setRootTransformIdsList([this._rootTransform().fullLabel]);
 
