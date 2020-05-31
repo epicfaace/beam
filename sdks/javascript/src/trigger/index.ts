@@ -16,4 +16,12 @@
  * limitations under the License.
  */
 
-export default () => null;
+import { Trigger } from '../model/generated/beam_runner_api_pb';
+
+export class DefaultTrigger {
+  serialize() {
+    const pb = new Trigger();
+    pb.setDefault();
+    return pb;
+  }
+}

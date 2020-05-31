@@ -33,7 +33,9 @@ export default {
   },
   StandardCoders: {
     Enum: {
-      STRING_UTF8: "beam:coder:string_utf8:v1"
+      BYTES: "beam:coder:bytes:v1",
+      STRING_UTF8: "beam:coder:string_utf8:v1",
+      GLOBAL_WINDOW: "beam:coder:global_window:v1"
     }
   }
   // [FixedWindowsPayload.Enum.PROPERTIES]: "beam:window_fn:fixed_windows:v1",

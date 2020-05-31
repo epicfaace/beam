@@ -16,4 +16,22 @@
  * limitations under the License.
  */
 
-export default () => null;
+import urns from '../model/urns';
+import { CoderSpec, Coder } from './index';
+
+class GlobalWindowCoderSpec extends CoderSpec {
+  _urn() {
+    return urns.StandardCoders.Enum.GLOBAL_WINDOW;
+  }
+  encode(value: any) {
+    return value;
+  }
+
+  decode(encoded: any) {
+    return encoded;
+  }
+}
+
+export class GlobalWindowCoder extends Coder {
+  spec: CoderSpec = new GlobalWindowCoderSpec();
+}

@@ -16,19 +16,29 @@
  * limitations under the License.
  */
 
-import { WindowingStrategy, MergeStatus, AccumulationMode, OutputTime, ClosingBehavior, OnTimeBehavior, Trigger } from '../model/generated/beam_runner_api_pb';
+import { WindowingStrategy, MergeStatus, AccumulationMode, OutputTime, ClosingBehavior, OnTimeBehavior } from '../model/generated/beam_runner_api_pb';
 import { FunctionSpec } from '../specs/function-spec';
 import urns from '../model/urns';
+import { DefaultTrigger } from '../trigger';
+import { GlobalWindowCoder } from '../coder/global';
 
 class WindowFunction extends FunctionSpec {
   _payload() {
     return "";
+  }
+
+  getWindowCoder() {
+    throw new Error("Needs to be implemented by subclasses");
   }
 }
 
 export class GlobalWindows extends WindowFunction {
   _urn() {
     return urns.GlobalWindowsPayload.Enum.PROPERTIES;
+  }
+
+  getWindowCoder() {
+    return new GlobalWindowCoder();
   }
 }
 
@@ -40,10 +50,11 @@ export class Windowing {
   serialize() {
     const pb = new WindowingStrategy();
     const windowFn = new GlobalWindows();
+    const trigger = new DefaultTrigger();
     pb.setWindowFn(windowFn.serialize());
     pb.setMergeStatus(MergeStatus.Enum.NON_MERGING);
     pb.setWindowCoderId("TODO");
-    pb.setTrigger(new Trigger());
+    pb.setTrigger(trigger.serialize());
     pb.setAccumulationMode(AccumulationMode.Enum.DISCARDING);
     pb.setOutputTime(OutputTime.Enum.END_OF_WINDOW);
     pb.setClosingBehavior(ClosingBehavior.Enum.EMIT_ALWAYS);

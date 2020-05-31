@@ -20,6 +20,7 @@ import { FunctionSpec } from '../specs/function-spec'
 import { CUSTOM_JS_TRANSFORM_URN } from '../model/urns'
 import { Pipeline, PValueish } from '../pipeline'
 import { PValue } from '../pcollection/pvalue'
+import { BytesCoder } from '../coder/bytes';
 
 export class PTransform extends FunctionSpec {
   pipeline: Pipeline;
@@ -47,11 +48,16 @@ export class PTransform extends FunctionSpec {
   }
 
   /**
+   * Infers output type to get the right coder.
+   */
+  getCoder() {
+    return new BytesCoder();
+  }
+
+  /**
    * Extract all the pvalues contained in the input pvalue.
-
-    By default, recursively extracts tuple components and dict values.
-
-    Generally only needs to be overriden for multi-input PTransforms.
+   * By default, recursively extracts tuple components and dict values.
+   * Generally only needs to be overriden for multi-input PTransforms.
   */
   extractInputPValues(pvalue?: PValue): PValue[] {
     if (!pvalue) {

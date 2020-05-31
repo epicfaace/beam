@@ -16,26 +16,22 @@
  * limitations under the License.
  */
 
-import { Coder as Coder_ } from '../model/generated/beam_runner_api_pb';
-import { FunctionSpec } from '../specs/function-spec';
+import urns from '../model/urns';
+import { CoderSpec, Coder } from './index';
 
-export class CoderSpec extends FunctionSpec {
+class BytesCoderSpec extends CoderSpec {
   _urn() {
-    return "";
+    return urns.StandardCoders.Enum.BYTES;
+  }
+  encode(value: any) {
+    return value;
   }
 
-  _payload() {
-    return "";
+  decode(encoded: any) {
+    return encoded;
   }
 }
 
-export class Coder {
-  spec: CoderSpec = new CoderSpec();
-  
-  serialize() {
-    const pb = new Coder_();
-    pb.setSpec(this.spec.serialize());
-    // pb.setComponentCoderIdsList([]); // TODO fix this
-    return pb;
-  }
+export class BytesCoder extends Coder {
+  spec: CoderSpec = new BytesCoderSpec();
 }
