@@ -30,7 +30,7 @@ Object {
   "displayDataList": Array [],
   "requirementsList": Array [],
   "rootTransformIdsList": Array [
-    "",
+    "ref_AppliedPTransform_AppliedPTransform_1",
   ],
 }
 `;
@@ -193,7 +193,7 @@ Object {
   "displayDataList": Array [],
   "requirementsList": Array [],
   "rootTransformIdsList": Array [
-    "",
+    "ref_AppliedPTransform_AppliedPTransform_1",
   ],
 }
 `;
@@ -466,7 +466,7 @@ Object {
   "displayDataList": Array [],
   "requirementsList": Array [],
   "rootTransformIdsList": Array [
-    "",
+    "ref_AppliedPTransform_AppliedPTransform_1",
   ],
 }
 `;
@@ -547,7 +547,77 @@ Object {
   "displayDataList": Array [],
   "requirementsList": Array [],
   "rootTransformIdsList": Array [
-    "",
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
+}
+`;
+
+exports[`Pipeline with ptransform with nothing 1`] = `
+Object {
+  "components": Object {
+    "codersMap": Array [
+      Array [
+        "ref_BytesCoder_BytesCoder_3",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+    ],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [],
+    "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_custom transform_2",
+          ],
+          "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom transform_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PBegin_PBegin_4",
+            ],
+          ],
+          "spec": Object {
+            "payload": "function (pcoll) {
+                return pcoll;
+            }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "custom transform",
+        },
+      ],
+    ],
+    "windowingStrategiesMap": Array [],
+  },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
   ],
 }
 `;

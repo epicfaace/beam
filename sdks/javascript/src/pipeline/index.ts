@@ -124,7 +124,7 @@ export class Pipeline {
     }
     // TODO: other parts of context, like coders
     pipeline.setComponents(components);
-    pipeline.setRootTransformIdsList([this._rootTransform().fullLabel]);
+    pipeline.setRootTransformIdsList([this._rootTransform().ref]);
 
     // StandardPTransforms.Primitives.MAP_WINDOWS
     return pipeline

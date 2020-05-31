@@ -60,8 +60,18 @@ describe('Pipeline', () => {
     p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "test"});
 
       p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
+    expect(p.serialize().toObject()).toMatchSnapshot();
+  });
 
-    // console.error(pcoll.serialize().toObject());
+  it('with ptransform with nothing', () => {
+    let p = new Pipeline();
+        
+    class CustomTransform extends PTransform {
+      expand(pcoll: PCollection) {
+        return pcoll;
+      }
+    }
+    p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   // it('with pipeline operator', () => {
