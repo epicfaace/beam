@@ -24,7 +24,7 @@ import { BytesCoder } from '../coder/bytes';
 
 export class PTransform extends FunctionSpec {
   pipeline: Pipeline;
-  constructor(pipeline: Pipeline) {
+  constructor({ pipeline }: { pipeline: Pipeline }) {
     super();
     this.pipeline = pipeline;
     // TODO: add label argument here.

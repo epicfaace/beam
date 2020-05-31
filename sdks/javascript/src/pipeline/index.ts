@@ -48,7 +48,7 @@ export class Pipeline {
     this.runner = runner || new DirectRunner();;
     this.options = options || new PipelineOptions();
 
-    const rootTransform = new AppliedPTransform(undefined, new PTransform(this), "", []);
+    const rootTransform = new AppliedPTransform(undefined, new PTransform({pipeline: this}), "", []);
     rootTransform.fullLabel = "";
     rootTransform.ref = this.context.createUniqueRef(rootTransform);
     this.transformsStack.push(rootTransform);

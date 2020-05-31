@@ -32,19 +32,19 @@ describe('Pipeline', () => {
   });
   it('with one transform', () => {
     let p = new Pipeline();
-    p.apply({ transform: new ParDo(new DoFn()), label: "custom label"});
+    p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "custom label"});
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   it('with multiple subtransforms', () => {
     let p = new Pipeline();
     
-    let pcoll = p.apply({ transform: new ParDo(new DoFn()), label: "A" });
+    let pcoll = p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "A" });
     
-      pcoll.apply({ transform: new ParDo(new DoFn()), label: "B-1"})
-      .apply({ transform: new ParDo(new DoFn()), label: "C-1"});
+      pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "B-1"})
+      .apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "C-1"});
 
-      pcoll.apply({ transform: new ParDo(new DoFn()), label: "B-2"})
-      .apply({ transform: new ParDo(new DoFn()), label: "C-2"});
+      pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "B-2"})
+      .apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "C-2"});
     // console.error(pcoll.serialize().toObject());
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
@@ -54,13 +54,12 @@ describe('Pipeline', () => {
         
     class CustomTransform extends PTransform {
       expand(pcoll: PCollection) {
-        return pcoll.apply({ transform: new ParDo(new DoFn()), label: "nested subtransform 1"});
-        // .apply({ transform: new ParDo(new DoFn()), label: "nested subtransform 2"});
+        return pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "nested subtransform 1"});
       }
     }
-    p.apply({ transform: new ParDo(new DoFn()), label: "test"});
+    p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "test"});
 
-      p.apply({ transform: new CustomTransform(), label: "custom transform" })
+      p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
 
     // console.error(pcoll.serialize().toObject());
     expect(p.serialize().toObject()).toMatchSnapshot();

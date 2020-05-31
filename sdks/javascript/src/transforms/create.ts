@@ -17,16 +17,18 @@
  */
 
 import { PTransform } from './ptransform'
+import { Pipeline } from '../pipeline';
 
 /*
  * A transform that creates a PCollection from an iterable.
  * @extends PTransform
  */
 export class Create extends PTransform {
-  values: any[]
-  constructor(values: any[], _options?: any) {
-    super();
-    this.values = values
+  values: any[];
+  
+  constructor({ values, ...parentProps }: { values: any[], pipeline: Pipeline }) {
+    super(parentProps);
+    this.values = values;
   }
 
   label() {

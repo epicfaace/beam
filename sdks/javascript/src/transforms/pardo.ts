@@ -22,12 +22,14 @@ import { PTransform } from './ptransform'
 import { DoFn } from '../specs/dofn'
 import { PCollection } from '../pcollection'
 import { PValue } from '../pcollection/pvalue'
+import { Pipeline } from '../pipeline'
 
 export class ParDo extends PTransform {
-  dofn: DoFn
-  constructor(dofn: DoFn, _props?: any) {
-    super(_props)
-    this.dofn = dofn
+  doFn: DoFn
+
+  constructor({ doFn, ...parentProps }: { doFn: DoFn, pipeline: Pipeline }) {
+    super(parentProps);
+    this.doFn = doFn;
   }
 
   _urn(): string {
@@ -36,7 +38,7 @@ export class ParDo extends PTransform {
 
   _payload() {
     const payload = new ParDoPayload()
-    payload.setDoFn(this.dofn.serialize())
+    payload.setDoFn(this.doFn.serialize())
     return payload.toString()
   }
 

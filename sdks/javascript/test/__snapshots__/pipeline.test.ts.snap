@@ -124,8 +124,7 @@ Object {
           ],
           "spec": Object {
             "payload": "function (pcoll) {
-                return pcoll.apply({ transform: new index_1.ParDo(new index_1.DoFn()), label: \\"nested subtransform 1\\" });
-                // .apply({ transform: new ParDo(new DoFn()), label: \\"nested subtransform 2\\"});
+                return pcoll.apply({ transform: new index_1.ParDo({ doFn: new index_1.DoFn(), pipeline: p }), label: \\"nested subtransform 1\\" });
             }",
             "urn": "beam:transform:javascript:v1",
           },
