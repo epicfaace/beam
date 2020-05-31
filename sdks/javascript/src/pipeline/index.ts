@@ -61,10 +61,10 @@ export class Pipeline {
     }
     const inputs = transform.extractInputPValues(pvalueish);
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
-    appliedPTransform.ref = this.context.createUniqueRef(transform, fullLabel);
+    appliedPTransform.ref = this.context.createUniqueRef(appliedPTransform, fullLabel);
 
     this.appliedLabels.add(fullLabel);
-    this._rootTransform().addPart(appliedPTransform);
+    this._currentTransform().addPart(appliedPTransform);
     this.transformsStack.push(appliedPTransform);
 
     const pvalueResult = this.runner.apply({

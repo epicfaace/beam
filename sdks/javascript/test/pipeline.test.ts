@@ -31,13 +31,13 @@ describe('Pipeline', () => {
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
-  it('with custom ptransform', () => {
+  it.only('with custom ptransform', () => {
     let p = new Pipeline();
         
     class CustomTransform extends PTransform {
       expand(pcoll: PCollection) {
-        return pcoll.apply({ transform: new ParDo(new DoFn()), label: "custom subtransform 1"})
-        .apply({ transform: new ParDo(new DoFn()), label: "custom subtransform 2"});
+        return pcoll.apply({ transform: new ParDo(new DoFn()), label: "nested subtransform 1"});
+        // .apply({ transform: new ParDo(new DoFn()), label: "nested subtransform 2"});
       }
     }
     p.apply({ transform: new ParDo(new DoFn()), label: "test"});
