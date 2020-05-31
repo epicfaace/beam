@@ -16,31 +16,30 @@
  * limitations under the License.
  */
 
-import { Coder as Coder_, MergeStatus, AccumulationMode, OutputTime, ClosingBehavior, OnTimeBehavior, Trigger } from '../model/generated/beam_runner_api_pb';
-import { FunctionSpec } from '../specs/function-spec';
-import urns from '../model/urns';
+import { PTransform } from './ptransform'
+import { GlobalWindows, Windowing } from '../windowing';
+import { PValueish } from '../pipeline';
+import { PBegin } from '../pcollection/pvalue';
+import { PCollection } from '../pcollection';
 
-class CoderSpec extends FunctionSpec {
-  _urn() {
-    return urns.StandardCoders.Enum.STRING_UTF8;
+/*
+ * Impulse primitive.
+ * @extends PTransform
+ */
+export class Impulse extends PTransform {
+
+  expand(input: PValueish) {
+    if (!(input instanceof PBegin)) {
+      throw new Error("Input to Impulse transfer must be a PBegin");
+    }
+    return new PCollection(input.pipeline);
   }
 
-  _payload() {
-    return "";
+  label() {
+    return "Create";
   }
-}
 
-export class Coder {
-  spec: CoderSpec;
-
-  constructor() {
-    this.spec = new CoderSpec();
-  }
-  
-  serialize() {
-    const pb = new Coder_();
-    pb.setSpec(this.spec.serialize());
-    // pb.setComponentCoderIdsList([]); // TODO fix this
-    return pb;
+  getWindowing() {
+    return new Windowing(new GlobalWindows());
   }
 }

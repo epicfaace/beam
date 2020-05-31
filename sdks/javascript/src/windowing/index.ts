@@ -21,18 +21,25 @@ import { FunctionSpec } from '../specs/function-spec';
 import urns from '../model/urns';
 
 class WindowFunction extends FunctionSpec {
-  _urn() {
-    return urns.GlobalWindowsPayload.Enum.PROPERTIES;
-  }
   _payload() {
     return "";
   }
 }
 
-export default class Windowing {
+export class GlobalWindows extends WindowFunction {
+  _urn() {
+    return urns.GlobalWindowsPayload.Enum.PROPERTIES;
+  }
+}
+
+export class Windowing {
+  windowFn: WindowFunction;
+  constructor(windowFn: WindowFunction) {
+    this.windowFn = windowFn;
+  }
   serialize() {
     const pb = new WindowingStrategy();
-    const windowFn = new WindowFunction();
+    const windowFn = new GlobalWindows();
     pb.setWindowFn(windowFn.serialize());
     pb.setMergeStatus(MergeStatus.Enum.NON_MERGING);
     pb.setWindowCoderId("TODO");

@@ -22,8 +22,10 @@ import { Pipeline, PValueish } from '../pipeline'
 import { PValue } from '../pcollection/pvalue'
 
 export class PTransform extends FunctionSpec {
-  constructor(_props?: any) {
-    super()
+  pipeline: Pipeline;
+  constructor(pipeline: Pipeline) {
+    super();
+    this.pipeline = pipeline;
     // TODO: add label argument here.
   }
 
@@ -45,32 +47,26 @@ export class PTransform extends FunctionSpec {
   }
 
   /**
-   * Extract all the pvalues contained in the input pvalueish.
-
-    Returns pvalueish as well as the flat inputs list as the input may have to
-    be copied as inspection may be destructive.
+   * Extract all the pvalues contained in the input pvalue.
 
     By default, recursively extracts tuple components and dict values.
 
     Generally only needs to be overriden for multi-input PTransforms.
   */
-  extractInputPValues(pvalueish?: PValueish): PValue[] {
-    if (!pvalueish) {
+  extractInputPValues(pvalue?: PValue): PValue[] {
+    if (!pvalue) {
       return [];
     }
-    if (pvalueish instanceof Pipeline) {
-      return []; // TODO: PBegin?
-    }
     const isIterable = (object: any) => object != null && typeof object[Symbol.iterator] === 'function';
-    const dictTupleLeaves = (pvalueish: any): any => {
-      if (isIterable(pvalueish)) {
-        return pvalueish.map((e: any) => dictTupleLeaves(e));
+    const dictTupleLeaves = (pvalue: any): any => {
+      if (isIterable(pvalue)) {
+        return pvalue.map((e: any) => dictTupleLeaves(e));
       }
-      if (pvalueish.constructor == Object) {
-        return dictTupleLeaves(Object.values(pvalueish));
+      if (pvalue.constructor == Object) {
+        return dictTupleLeaves(Object.values(pvalue));
       }
-      return pvalueish;
+      return pvalue;
     }
-    return [dictTupleLeaves(pvalueish)];
+    return [dictTupleLeaves(pvalue)];
   }
 }

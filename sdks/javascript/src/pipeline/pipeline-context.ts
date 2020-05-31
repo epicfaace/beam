@@ -18,7 +18,7 @@
 
 import { AppliedPTransform } from './applied-ptransform';
 import { PCollection } from '../pcollection';
-import Windowing from '../windowing';
+import { Windowing } from '../windowing';
 export class PipelineContext {
   counter: number = 0;
   namespace: string = "ref";

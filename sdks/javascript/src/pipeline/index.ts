@@ -18,12 +18,13 @@
 
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
-import { PValue, PBegin } from '../pcollection/pvalue'
+import { PValue } from '../pcollection/pvalue'
 import { PipelineContext } from './pipeline-context';
 import { AppliedPTransform } from './applied-ptransform';
 import { PipelineOptions } from './pipeline-options';
 import { PipelineRunner } from '../runner/pipeline-runner';
 import { DirectRunner } from '../runner/direct-runner';
+import { PBegin } from '../pcollection/pvalue';
 
 export type PValueish = PValue | Pipeline
 
@@ -47,7 +48,7 @@ export class Pipeline {
     this.runner = runner || new DirectRunner();;
     this.options = options || new PipelineOptions();
 
-    const rootTransform = new AppliedPTransform(undefined, new PTransform(), "", []);
+    const rootTransform = new AppliedPTransform(undefined, new PTransform(this), "", []);
     rootTransform.fullLabel = "";
     rootTransform.ref = this.context.createUniqueRef(rootTransform);
     this.transformsStack.push(rootTransform);
@@ -59,10 +60,6 @@ export class Pipeline {
 
   _rootTransform() {
     return this.transformsStack[0];
-  }
-
-  begin() {
-    return this.apply({ transform: new PTransform(), pvalueish: new PBegin(this)})
   }
 
   /**
@@ -77,7 +74,11 @@ export class Pipeline {
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
     }
-    const inputs = transform.extractInputPValues(pvalueish);
+
+    if (pvalueish instanceof Pipeline) {
+      pvalueish = new PBegin(pvalueish);
+    }
+    let inputs = transform.extractInputPValues(pvalueish);
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
     appliedPTransform.ref = this.context.createUniqueRef(appliedPTransform, fullLabel);
 
