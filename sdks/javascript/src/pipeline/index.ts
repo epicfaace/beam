@@ -76,14 +76,17 @@ export class Pipeline {
     }
 
     if (pvalueish instanceof Pipeline) {
-      pvalueish = new PBegin(pvalueish);
+      pvalueish = new PBegin({ pipeline: pvalueish });
     }
     let inputs = transform.extractInputPValues(pvalueish);
     const appliedPTransform = new AppliedPTransform(this._currentTransform(), transform, fullLabel, inputs);
     appliedPTransform.ref = this.context.createUniqueRef(appliedPTransform, fullLabel);
 
-    // Add coder to registry
+    // Add coders and windowing strategies to registry
+    // TODO: don't unnecessarily create duplicate coders
     transform.getCoder().ref = this.context.createUniqueRef(transform.getCoder());
+    transform.getWindowing().ref = this.context.createUniqueRef(transform.getWindowing());
+    transform.getWindowing().getWindowCoder().ref = this.context.createUniqueRef(transform.getWindowing().getWindowCoder());
 
     this.appliedLabels.add(fullLabel);
     this._currentTransform().addPart(appliedPTransform);

@@ -21,6 +21,7 @@ import { CUSTOM_JS_TRANSFORM_URN } from '../model/urns'
 import { Pipeline, PValueish } from '../pipeline'
 import { PValue } from '../pcollection/pvalue'
 import { BytesCoder } from '../coder/bytes';
+import { Windowing, GlobalWindows } from '../windowing';
 
 export class PTransform extends FunctionSpec {
   pipeline: Pipeline;
@@ -52,6 +53,13 @@ export class PTransform extends FunctionSpec {
    */
   getCoder() {
     return new BytesCoder();
+  }
+
+  /**
+   * Get windowing for this PTransform.
+   */
+  getWindowing() {
+    return new Windowing(new GlobalWindows());
   }
 
   /**

@@ -26,7 +26,7 @@ export class PValue {
   pipeline: Pipeline;
   ref: string;
   
-  constructor(pipeline: Pipeline) {
+  constructor({ pipeline } : { pipeline: Pipeline }) {
     this.pipeline = pipeline;
     this.ref = pipeline.context.createUniqueRef(this);
   }

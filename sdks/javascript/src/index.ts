@@ -18,7 +18,7 @@
 
 export { Pipeline } from './pipeline'
 export { DoFn } from './specs/dofn'
-export { Create, ParDo, PTransform } from './transforms'
+export { Create, ParDo, PTransform, Impulse } from './transforms'
 
 // const x = 5 |> (x => x ** 2);
 // console.error(x);

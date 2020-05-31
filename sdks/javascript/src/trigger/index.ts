@@ -21,7 +21,7 @@ import { Trigger } from '../model/generated/beam_runner_api_pb';
 export class DefaultTrigger {
   serialize() {
     const pb = new Trigger();
-    pb.setDefault();
+    pb.setDefault(new Trigger.Default());
     return pb;
   }
 }

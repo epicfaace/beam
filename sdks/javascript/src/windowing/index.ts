@@ -21,13 +21,14 @@ import { FunctionSpec } from '../specs/function-spec';
 import urns from '../model/urns';
 import { DefaultTrigger } from '../trigger';
 import { GlobalWindowCoder } from '../coder/global';
+import { Coder } from '../coder';
 
 class WindowFunction extends FunctionSpec {
   _payload() {
     return null;
   }
 
-  getWindowCoder() {
+  getWindowCoder(): Coder {
     throw new Error("Needs to be implemented by subclasses");
   }
 }
@@ -44,9 +45,16 @@ export class GlobalWindows extends WindowFunction {
 
 export class Windowing {
   windowFn: WindowFunction;
+  ref: string = "";
+  
   constructor(windowFn: WindowFunction) {
     this.windowFn = windowFn;
   }
+
+  getWindowCoder() {
+    return this.windowFn.getWindowCoder();
+  }
+
   serialize() {
     const pb = new WindowingStrategy();
     const windowFn = new GlobalWindows();

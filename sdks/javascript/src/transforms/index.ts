@@ -16,10 +16,10 @@
  * limitations under the License.
  */
 
-export { Pipeline } from '../pipeline'
 export { ParDo } from './pardo'
 export { PTransform } from './ptransform'
 export { Create } from './create'
+export { Impulse } from './impulse';
 
 // type PipelineArgs = any[]
 // // type PipelineFn = (p: Pipeline) => (...args: PipelineArgs) => Pipeline;

@@ -32,7 +32,7 @@ export class Impulse extends PTransform {
     if (!(input instanceof PBegin)) {
       throw new Error("Input to Impulse transfer must be a PBegin");
     }
-    return new PCollection(input.pipeline);
+    return new PCollection({ pipeline: input.pipeline });
   }
 
   label() {

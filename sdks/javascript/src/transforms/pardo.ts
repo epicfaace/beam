@@ -43,6 +43,6 @@ export class ParDo extends PTransform {
   }
 
   expand(input: PValue) {
-    return new PCollection(input.pipeline);
+    return new PCollection({ pipeline: input.pipeline });
   }
 }

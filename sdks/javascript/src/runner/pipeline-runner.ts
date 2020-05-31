@@ -16,11 +16,12 @@
  * limitations under the License.
  */
 
-import { PTransform, Pipeline } from '../transforms';
+import { PTransform } from '../transforms';
 import { PipelineOptions } from '../pipeline/pipeline-options';
 import { AppliedPTransform } from '../pipeline/applied-ptransform';
 import { PValueish } from '../pipeline';
 import { PBegin, PValue } from '../pcollection/pvalue';
+import { Pipeline } from '../pipeline';
 
 /**
  * A runner of a pipeline object.
@@ -67,7 +68,7 @@ export class PipelineRunner {
    * @param {PipelineOptions} options Pipeline options
    */
   apply({transform, pvalueish}: {transform: PTransform, pvalueish: PValueish, options?: PipelineOptions}) {
-    const pvalue: PValue = pvalueish instanceof Pipeline ? new PBegin(pvalueish) : pvalueish;
+    const pvalue: PValue = pvalueish instanceof Pipeline ? new PBegin({ pipeline: pvalueish }) : pvalueish;
     return transform.expand(pvalue);
   }
 

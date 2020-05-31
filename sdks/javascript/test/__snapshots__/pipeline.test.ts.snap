@@ -40,7 +40,7 @@ Object {
   "components": Object {
     "codersMap": Array [
       Array [
-        "ref_BytesCoder_BytesCoder_10",
+        "ref_BytesCoder_BytesCoder_14",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -60,7 +60,7 @@ Object {
         },
       ],
       Array [
-        "ref_BytesCoder_BytesCoder_7",
+        "ref_BytesCoder_BytesCoder_9",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -69,26 +69,56 @@ Object {
           },
         },
       ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_11",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_16",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
     ],
     "environmentsMap": Array [],
     "pcollectionsMap": Array [
       Array [
-        "ref_PCollection_PCollection_11",
+        "ref_PCollection_PCollection_17",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_11",
+          "uniqueName": "ref_PCollection_PCollection_17",
           "windowingStrategyId": "TODO",
         },
       ],
       Array [
-        "ref_PCollection_PCollection_5",
+        "ref_PCollection_PCollection_7",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_5",
+          "uniqueName": "ref_PCollection_PCollection_7",
           "windowingStrategyId": "TODO",
         },
       ],
@@ -109,26 +139,26 @@ Object {
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_test_2",
-            "ref_AppliedPTransform_custom transform_6",
+            "ref_AppliedPTransform_custom transform_8",
           ],
           "uniqueName": "",
         },
       ],
       Array [
-        "ref_AppliedPTransform_custom transform/nested subtransform 1_9",
+        "ref_AppliedPTransform_custom transform/nested subtransform 1_13",
         Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [
             Array [
               "0",
-              "ref_PBegin_PBegin_8",
+              "ref_PBegin_PBegin_12",
             ],
           ],
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_11",
+              "ref_PCollection_PCollection_17",
             ],
           ],
           "spec": Object {
@@ -142,7 +172,7 @@ Object {
         },
       ],
       Array [
-        "ref_AppliedPTransform_custom transform_6",
+        "ref_AppliedPTransform_custom transform_8",
         Object {
           "displayDataList": Array [],
           "environmentId": "",
@@ -150,7 +180,7 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_11",
+              "ref_PCollection_PCollection_17",
             ],
           ],
           "spec": Object {
@@ -160,7 +190,7 @@ Object {
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
-            "ref_AppliedPTransform_custom transform/nested subtransform 1_9",
+            "ref_AppliedPTransform_custom transform/nested subtransform 1_13",
           ],
           "uniqueName": "custom transform",
         },
@@ -174,7 +204,7 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_5",
+              "ref_PCollection_PCollection_7",
             ],
           ],
           "spec": Object {
@@ -188,7 +218,104 @@ Object {
         },
       ],
     ],
-    "windowingStrategiesMap": Array [],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_10",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_15",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
   },
   "displayDataList": Array [],
   "requirementsList": Array [],
@@ -203,7 +330,7 @@ Object {
   "components": Object {
     "codersMap": Array [
       Array [
-        "ref_BytesCoder_BytesCoder_10",
+        "ref_BytesCoder_BytesCoder_14",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -213,7 +340,7 @@ Object {
         },
       ],
       Array [
-        "ref_BytesCoder_BytesCoder_13",
+        "ref_BytesCoder_BytesCoder_19",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -223,7 +350,7 @@ Object {
         },
       ],
       Array [
-        "ref_BytesCoder_BytesCoder_16",
+        "ref_BytesCoder_BytesCoder_24",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -243,7 +370,7 @@ Object {
         },
       ],
       Array [
-        "ref_BytesCoder_BytesCoder_7",
+        "ref_BytesCoder_BytesCoder_9",
         Object {
           "componentCoderIdsList": Array [],
           "spec": Object {
@@ -252,26 +379,66 @@ Object {
           },
         },
       ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_11",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_16",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_21",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_26",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
     ],
     "environmentsMap": Array [],
     "pcollectionsMap": Array [
       Array [
-        "ref_PCollection_PCollection_11",
+        "ref_PCollection_PCollection_12",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_11",
-          "windowingStrategyId": "TODO",
-        },
-      ],
-      Array [
-        "ref_PCollection_PCollection_14",
-        Object {
-          "coderId": "TODO",
-          "displayDataList": Array [],
-          "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_14",
+          "uniqueName": "ref_PCollection_PCollection_12",
           "windowingStrategyId": "TODO",
         },
       ],
@@ -286,22 +453,32 @@ Object {
         },
       ],
       Array [
-        "ref_PCollection_PCollection_5",
+        "ref_PCollection_PCollection_22",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_5",
+          "uniqueName": "ref_PCollection_PCollection_22",
           "windowingStrategyId": "TODO",
         },
       ],
       Array [
-        "ref_PCollection_PCollection_8",
+        "ref_PCollection_PCollection_27",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_8",
+          "uniqueName": "ref_PCollection_PCollection_27",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+      Array [
+        "ref_PCollection_PCollection_7",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_7",
           "windowingStrategyId": "TODO",
         },
       ],
@@ -316,7 +493,7 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_5",
+              "ref_PCollection_PCollection_7",
             ],
           ],
           "spec": Object {
@@ -344,29 +521,29 @@ Object {
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_A_2",
-            "ref_AppliedPTransform_B-1_6",
-            "ref_AppliedPTransform_C-1_9",
-            "ref_AppliedPTransform_B-2_12",
-            "ref_AppliedPTransform_C-2_15",
+            "ref_AppliedPTransform_B-1_8",
+            "ref_AppliedPTransform_C-1_13",
+            "ref_AppliedPTransform_B-2_18",
+            "ref_AppliedPTransform_C-2_23",
           ],
           "uniqueName": "",
         },
       ],
       Array [
-        "ref_AppliedPTransform_B-1_6",
+        "ref_AppliedPTransform_B-1_8",
         Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [
             Array [
               "0",
-              "ref_PCollection_PCollection_5",
+              "ref_PCollection_PCollection_7",
             ],
           ],
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_8",
+              "ref_PCollection_PCollection_12",
             ],
           ],
           "spec": Object {
@@ -380,20 +557,20 @@ Object {
         },
       ],
       Array [
-        "ref_AppliedPTransform_B-2_12",
+        "ref_AppliedPTransform_B-2_18",
         Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [
             Array [
               "0",
-              "ref_PCollection_PCollection_5",
+              "ref_PCollection_PCollection_7",
             ],
           ],
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_14",
+              "ref_PCollection_PCollection_22",
             ],
           ],
           "spec": Object {
@@ -407,41 +584,14 @@ Object {
         },
       ],
       Array [
-        "ref_AppliedPTransform_C-1_9",
+        "ref_AppliedPTransform_C-1_13",
         Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [
             Array [
               "0",
-              "ref_PCollection_PCollection_8",
-            ],
-          ],
-          "outputsMap": Array [
-            Array [
-              "None",
-              "ref_PCollection_PCollection_11",
-            ],
-          ],
-          "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
-            "urn": "beam:transform:pardo:v1",
-          },
-          "subtransformsList": Array [],
-          "uniqueName": "C-1",
-        },
-      ],
-      Array [
-        "ref_AppliedPTransform_C-2_15",
-        Object {
-          "displayDataList": Array [],
-          "environmentId": "",
-          "inputsMap": Array [
-            Array [
-              "0",
-              "ref_PCollection_PCollection_14",
+              "ref_PCollection_PCollection_12",
             ],
           ],
           "outputsMap": Array [
@@ -457,11 +607,199 @@ Object {
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
+          "uniqueName": "C-1",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_C-2_23",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_22",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_27",
+            ],
+          ],
+          "spec": Object {
+            "payload": "beam:dofn:javascript:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
           "uniqueName": "C-2",
         },
       ],
     ],
-    "windowingStrategiesMap": Array [],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_10",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_15",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_20",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_25",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
   },
   "displayDataList": Array [],
   "requirementsList": Array [],
@@ -485,16 +823,26 @@ Object {
           },
         },
       ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
     ],
     "environmentsMap": Array [],
     "pcollectionsMap": Array [
       Array [
-        "ref_PCollection_PCollection_5",
+        "ref_PCollection_PCollection_7",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_5",
+          "uniqueName": "ref_PCollection_PCollection_7",
           "windowingStrategyId": "TODO",
         },
       ],
@@ -528,7 +876,7 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_5",
+              "ref_PCollection_PCollection_7",
             ],
           ],
           "spec": Object {
@@ -542,7 +890,248 @@ Object {
         },
       ],
     ],
-    "windowingStrategiesMap": Array [],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
+  },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
+}
+`;
+
+exports[`Pipeline with ptransform with impulse 1`] = `
+Object {
+  "components": Object {
+    "codersMap": Array [
+      Array [
+        "ref_BytesCoder_BytesCoder_3",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_BytesCoder_BytesCoder_8",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_10",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+    ],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [
+      Array [
+        "ref_PCollection_PCollection_11",
+        Object {
+          "coderId": "TODO",
+          "displayDataList": Array [],
+          "isBounded": 2,
+          "uniqueName": "ref_PCollection_PCollection_11",
+          "windowingStrategyId": "TODO",
+        },
+      ],
+    ],
+    "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_custom transform_2",
+          ],
+          "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom transform/Create_7",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PBegin_PBegin_6",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_11",
+            ],
+          ],
+          "spec": Object {
+            "payload": "function (input) {
+        if (!(input instanceof pvalue_1.PBegin)) {
+            throw new Error(\\"Input to Impulse transfer must be a PBegin\\");
+        }
+        return new pcollection_1.PCollection({ pipeline: input.pipeline });
+    }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "custom transform/Create",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom transform_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_11",
+            ],
+          ],
+          "spec": Object {
+            "payload": "function (pcoll) {
+                return pcoll.apply({ transform: new index_1.Impulse({ pipeline: p }) });
+            }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_custom transform/Create_7",
+          ],
+          "uniqueName": "custom transform",
+        },
+      ],
+    ],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_9",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
   },
   "displayDataList": Array [],
   "requirementsList": Array [],
@@ -563,6 +1152,16 @@ Object {
           "spec": Object {
             "payload": "",
             "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
           },
         },
       ],
@@ -598,7 +1197,7 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PBegin_PBegin_4",
+              "ref_PBegin_PBegin_6",
             ],
           ],
           "spec": Object {
@@ -612,7 +1211,40 @@ Object {
         },
       ],
     ],
-    "windowingStrategiesMap": Array [],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
   },
   "displayDataList": Array [],
   "requirementsList": Array [],
