@@ -1,6 +1,6 @@
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
-import { PValue } from "pcollection";
+import { PValue } from "../pcollection";
 
 /*
  * A transform node representing an instance of applying a PTransform

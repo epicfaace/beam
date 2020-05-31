@@ -7,13 +7,24 @@ describe('Pipeline', () => {
   
   //   expect(p.serialize()).toMatchSnapshot();
   // });
-  it('empty pipeline with single root transform', () => {
+  it('empty with single root transform', () => {
     let p = new Pipeline();
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
-  it('pipeline with root + subtransforms', () => {
+  it('with one transform', () => {
     let p = new Pipeline();
     p.apply(new ParDo(new DoFn()), "custom label");
+    expect(p.serialize().toObject()).toMatchSnapshot();
+  });
+  it('with multiple subtransforms', () => {
+    let p = new Pipeline()
+      .apply(new ParDo(new DoFn()), "A");
+    
+    p.apply(new ParDo(new DoFn()), "B-1")
+      .apply(new ParDo(new DoFn()), "C-1");
+
+    p.apply(new ParDo(new DoFn()), "B-2")
+      .apply(new ParDo(new DoFn()), "C-2");
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   // it('with pipeline operator', () => {

@@ -1,8 +1,11 @@
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
-import { PValue } from 'pcollection'
+import { PValue } from '../pcollection'
 import { PipelineContext } from './pipeline-context';
 import { AppliedPTransform } from './applied-ptransform';
+import { PipelineOptions } from './pipeline-options';
+import { PipelineRunner } from '../runner/pipeline-runner';
+import { DirectRunner } from '../runner/direct-runner';
 
 export type PValueish = PValue | Pipeline
 
@@ -16,9 +19,15 @@ export class Pipeline {
   /** Pipeline context -- used for generating unique refs. */
   context: PipelineContext = new PipelineContext();
 
-  constructor(_props?: any) {
-    // TODO: add pipelineoptions
-    // TODO: CallableWrapperDOFn for map and flatmap
+  /** Pipeline options */
+  options: PipelineOptions;
+
+  /** Pipeline runner */
+  runner: PipelineRunner;
+
+  constructor(runner?: PipelineRunner, options?: PipelineOptions) {
+    this.runner = runner || new DirectRunner();;
+    this.options = options || new PipelineOptions();
 
     const rootTransform = new AppliedPTransform(undefined, new PTransform(), "", []);
     rootTransform.fullLabel = this.context.createUniqueRef(rootTransform);
@@ -86,5 +95,12 @@ export class Pipeline {
    */
   build() {
     return this.serialize().toObject()
+  }
+
+  /**
+   * Runs this pipeline.
+   */
+  async run() {
+    return this.runner.runPipeline(this, this.options);
   }
 }

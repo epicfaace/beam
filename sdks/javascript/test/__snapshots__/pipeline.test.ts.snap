@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pipeline empty pipeline with single root transform 1`] = `
+exports[`Pipeline empty with single root transform 1`] = `
 Object {
   "components": Object {
     "codersMap": Array [],
@@ -33,7 +33,42 @@ Object {
 }
 `;
 
-exports[`Pipeline pipeline with root + subtransforms 1`] = `
+exports[`Pipeline with multiple subtransforms 1`] = `
+Object {
+  "components": Object {
+    "codersMap": Array [],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [],
+    "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "[object Object]",
+            "urn": "beam:transform:js:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_A_2",
+          ],
+          "uniqueName": "ref_AppliedPTransform_AppliedPTransform_1",
+        },
+      ],
+    ],
+    "windowingStrategiesMap": Array [],
+  },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
+}
+`;
+
+exports[`Pipeline with one transform 1`] = `
 Object {
   "components": Object {
     "codersMap": Array [],

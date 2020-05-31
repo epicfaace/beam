@@ -7,7 +7,7 @@ import { PTransform } from './ptransform'
 export class Create extends PTransform {
   values: any[]
   constructor(values: any[], _options?: any) {
-    super()
+    super();
     this.values = values
   }
 

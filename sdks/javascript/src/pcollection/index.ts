@@ -18,6 +18,10 @@ export class PValue {
   // }
 }
 
+export class PBegin extends PValue {
+  
+}
+
 /**
  * A multiple values (potentially huge) container.
  */
