@@ -14,7 +14,8 @@ export class PTransform extends FunctionSpec {
   }
 
   _payload() {
-    return this.toString()
+    // TODO: use a custom protobuf format
+    return this.expand.toString();
   }
 
   label() {

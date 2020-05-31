@@ -81,7 +81,9 @@ export class Pipeline {
     const pipeline = new beam_runner_api_pb.Pipeline();
 
     const components = new beam_runner_api_pb.Components();
-    components.getTransformsMap().set(this._rootTransform().fullLabel, this._rootTransform().serialize());
+    for (let transform of this.transformsStack) {
+      components.getTransformsMap().set(transform.fullLabel, transform.serialize());
+    }
     pipeline.setComponents(components);
     pipeline.setRootTransformIdsList([this._rootTransform().fullLabel]);
 

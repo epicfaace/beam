@@ -15,7 +15,9 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "[object Object]",
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
             "urn": "beam:transform:js:v1",
           },
           "subtransformsList": Array [],
@@ -41,6 +43,25 @@ Object {
     "pcollectionsMap": Array [],
     "transformsMap": Array [
       Array [
+        "ref_AppliedPTransform_A_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_B-1_5",
+          ],
+          "uniqueName": "ref_AppliedPTransform_A_2",
+        },
+      ],
+      Array [
         "ref_AppliedPTransform_AppliedPTransform_1",
         Object {
           "displayDataList": Array [],
@@ -48,13 +69,89 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "[object Object]",
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
             "urn": "beam:transform:js:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_A_2",
           ],
           "uniqueName": "ref_AppliedPTransform_AppliedPTransform_1",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_B-1_5",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_C-1_7",
+          ],
+          "uniqueName": "ref_AppliedPTransform_B-1_5",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_B-2_9",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_C-2_11",
+          ],
+          "uniqueName": "ref_AppliedPTransform_B-2_9",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_C-1_7",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_B-2_9",
+          ],
+          "uniqueName": "ref_AppliedPTransform_C-1_7",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_C-2_11",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "ref_AppliedPTransform_C-2_11",
         },
       ],
     ],
@@ -83,13 +180,32 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "[object Object]",
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
             "urn": "beam:transform:js:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_custom label_2",
           ],
           "uniqueName": "ref_AppliedPTransform_AppliedPTransform_1",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom label_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "beam:dofn:js:v1,,function () {
+        throw new Error('Needs to be implemented in subclasses');
+    }",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "ref_AppliedPTransform_custom label_2",
         },
       ],
     ],
