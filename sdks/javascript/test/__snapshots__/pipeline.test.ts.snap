@@ -48,7 +48,12 @@ Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [],
-          "outputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
@@ -85,8 +90,18 @@ Object {
         Object {
           "displayDataList": Array [],
           "environmentId": "",
-          "inputsMap": Array [],
-          "outputsMap": Array [],
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_6",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
@@ -104,8 +119,18 @@ Object {
         Object {
           "displayDataList": Array [],
           "environmentId": "",
-          "inputsMap": Array [],
-          "outputsMap": Array [],
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_10",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
@@ -123,8 +148,18 @@ Object {
         Object {
           "displayDataList": Array [],
           "environmentId": "",
-          "inputsMap": Array [],
-          "outputsMap": Array [],
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_6",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_8",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
@@ -142,8 +177,18 @@ Object {
         Object {
           "displayDataList": Array [],
           "environmentId": "",
-          "inputsMap": Array [],
-          "outputsMap": Array [],
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_10",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_12",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');
@@ -197,7 +242,12 @@ Object {
           "displayDataList": Array [],
           "environmentId": "",
           "inputsMap": Array [],
-          "outputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_4",
+            ],
+          ],
           "spec": Object {
             "payload": "beam:dofn:js:v1,,function () {
         throw new Error('Needs to be implemented in subclasses');

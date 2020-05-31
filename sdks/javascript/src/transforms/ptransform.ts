@@ -53,6 +53,6 @@ export class PTransform extends FunctionSpec {
       }
       return pvalueish;
     }
-    return dictTupleLeaves(pvalueish);
+    return [dictTupleLeaves(pvalueish)];
   }
 }

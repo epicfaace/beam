@@ -65,12 +65,15 @@ export class Pipeline {
     this._currentTransform().addPart(appliedPTransform);
     this.transformsStack.push(appliedPTransform);
 
-    const pvalueishResult = this.runner.apply({
+    const pvalueResult = this.runner.apply({
       transform,
       pvalueish: pvalueish || this,
       options: this.options
     });
-    return pvalueishResult;
+
+    appliedPTransform.addOutput(pvalueResult);
+
+    return pvalueResult;
   }
 
   /**

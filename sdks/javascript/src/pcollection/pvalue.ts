@@ -23,6 +23,11 @@ export class PValue {
   apply({transform, label}: {transform: PTransform, label?: string}) {
     return this.pipeline.apply({transform, label, pvalueish: this});
   }
+
+  serialize(): any {
+    return null;
+    // throw new Error("Should be implemented by PCollection");
+  }
 }
 
 /**

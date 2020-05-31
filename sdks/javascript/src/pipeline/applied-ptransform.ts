@@ -1,6 +1,6 @@
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
-import { PValue } from "../pcollection";
+import { PValue } from '../pcollection/pvalue';
 
 /*
  * A transform node representing an instance of applying a PTransform
@@ -11,6 +11,7 @@ export class AppliedPTransform {
   transform?: PTransform;
   fullLabel: string;
   inputs: PValue[];
+  outputs: PValue[] = [];
   parts: AppliedPTransform[] = [];
 
   constructor(parent: AppliedPTransform | undefined, transform: PTransform | undefined, fullLabel: string, inputs: PValue[]) {
@@ -24,11 +25,22 @@ export class AppliedPTransform {
     this.parts.push(part);
   }
 
+  addOutput(output: PValue) {
+    this.outputs.push(output);
+  }
+
   serialize() {
     const transform = new beam_runner_api_pb.PTransform();
     transform.setUniqueName(this.fullLabel);
     if (this.transform) {
       transform.setSpec(this.transform.serialize());
+      for (let i in this.inputs) {
+        transform.getInputsMap().set(i, this.inputs[i].name);
+      }
+      for (let i in this.outputs) {
+        // TODO: handle multiple outputs
+        transform.getOutputsMap().set("None", this.outputs[i].name);
+      }
       // TODO:
       // setInputs
       // setOutputs
