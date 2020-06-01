@@ -62,7 +62,7 @@ function *leafTransformStages (rootIds: string[], components?: beam_runner_api_p
 export class DirectRunner extends PipelineRunner {
   numWorkers = 1;
 
-  async runPipeline(pipeline: Pipeline, _options?: PipelineOptions) {
+  async runPipeline(pipeline: Pipeline, _options: PipelineOptions) {
     // TODO: validate requirements
     // TODO: check requirements
     // const stages = this._createStages(pipeline.serialize());

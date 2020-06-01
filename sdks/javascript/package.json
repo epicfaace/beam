@@ -38,6 +38,7 @@
     "@babel/preset-typescript": "^7.10.1",
     "@rollup/plugin-babel": "^5.0.2",
     "husky": "^4.2.5",
+    "protoc-gen-grpc": "^1.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
@@ -45,10 +46,14 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.0.4",
+    "@grpc/proto-loader": "^0.5.4",
     "@types/google-protobuf": "^3.7.2",
     "@types/jest": "^25.2.3",
     "core-js": "3",
     "google-protobuf": "^3.12.2",
+    "grpc": "^1.24.2",
+    "grpc-tools": "^1.9.0",
+    "grpc-web": "^1.1.0",
     "ts-protoc-gen": "^0.12.0"
   }
 }

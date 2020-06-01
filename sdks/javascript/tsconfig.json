@@ -1,5 +1,6 @@
 {
   "include": ["src", "types"],
+  "exclude": ["src/model/generated"],
   "compilerOptions": {
     "module": "esnext",
     "downlevelIteration": true,

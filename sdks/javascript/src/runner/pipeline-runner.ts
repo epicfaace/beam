@@ -41,7 +41,7 @@ export class PipelineRunner {
    * @param {Pipeline} pipeline Pipeline to run
    * @param {PipelineOptions} options Pipeline options 
    */
-  async runPipeline(_pipeline: Pipeline, _options?: PipelineOptions) {
+  async runPipeline(_pipeline: Pipeline, _options: PipelineOptions) {
     throw new Error("Subclasses should implement this method");
   }
 

@@ -24,5 +24,8 @@ module.exports = {
       "babelConfig": false,
       "diagnostics": true
     }
-  }
+  },
+  // "moduleNameMapper": {
+  //   "(.*)[\\.]ts$": "$1.d.ts"
+  // }
 };

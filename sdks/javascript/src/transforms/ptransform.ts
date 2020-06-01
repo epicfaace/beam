@@ -37,7 +37,7 @@ export class PTransform extends FunctionSpec {
     return CUSTOM_JS_TRANSFORM_URN
   }
 
-  _payload() {
+  _payload(): (any) {
     // TODO: use a custom protobuf format
     return this.expand.toString();
   }

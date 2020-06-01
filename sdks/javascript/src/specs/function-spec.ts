@@ -37,7 +37,7 @@ export class FunctionSpec {
    * Get the payload of this object.
    * @return {string} The object's payload.
    */
-  _payload(): string | null {
+  _payload(): string {
     throw new Error('Needs to be implemented in subclasses')
   }
 
@@ -49,7 +49,10 @@ export class FunctionSpec {
     const spec = new FunctionSpecProto();
     spec.setUrn(this._urn())
     if (this._payload() !== null) {
-      spec.setPayload(this._payload() as string);
+      const enc = new TextEncoder();
+      const buf = enc.encode(this._payload()).buffer;
+      spec.setPayload(new Uint8Array(buf));
+      // spec.setPayload(this._payload() as string);
     }
     return spec
   }

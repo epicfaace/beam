@@ -16,9 +16,26 @@
  * limitations under the License.
  */
 
+import { PipelineRunner } from '../runner/pipeline-runner';
+import { DirectRunner } from '../runner/direct-runner';
+
 /**
  * Pipeline options.
  */
 export class PipelineOptions {
-
+  runner: PipelineRunner = new DirectRunner();
+  jobEndpoint: string = "";
+  environmentType: string = "";
+  
+  constructor({ runner, jobEndpoint, environmentType }: { runner?: PipelineRunner, jobEndpoint?: string, environmentType?: string } = {}) {
+    if (runner) {
+      this.runner = runner;
+    }
+    if (jobEndpoint) {
+      this.jobEndpoint = jobEndpoint;
+    }
+    if (environmentType) {
+      this.environmentType = environmentType;
+    }
+  }
 }

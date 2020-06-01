@@ -30,6 +30,7 @@ module.exports = {
           // This is required in order to import protobufs properly when building with commonjs
           "./endpoints_pb.js": Object.keys(require("./src/model/generated/endpoints_pb.js")),
           "./src/model/generated/beam_runner_api_pb.js": Object.keys(require("./src/model/generated/beam_runner_api_pb.js")),
+          "./src/model/generated/beam_fn_api_grpc_pb": Object.keys(require("./src/model/generated/beam_fn_api_grpc_pb"))
         }
       })
     )

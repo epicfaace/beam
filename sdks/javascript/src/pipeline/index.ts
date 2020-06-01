@@ -23,7 +23,6 @@ import { PipelineContext } from './pipeline-context';
 import { AppliedPTransform } from './applied-ptransform';
 import { PipelineOptions } from './pipeline-options';
 import { PipelineRunner } from '../runner/pipeline-runner';
-import { DirectRunner } from '../runner/direct-runner';
 import { PBegin } from '../pcollection/pvalue';
 
 export type PValueish = PValue | Pipeline
@@ -44,9 +43,9 @@ export class Pipeline {
   /** Pipeline runner */
   runner: PipelineRunner;
 
-  constructor(runner?: PipelineRunner, options?: PipelineOptions) {
-    this.runner = runner || new DirectRunner();;
-    this.options = options || new PipelineOptions();
+  constructor(options: PipelineOptions = new PipelineOptions()) {
+    this.runner = options.runner;
+    this.options = options;
 
     const rootTransform = new AppliedPTransform(undefined, new PTransform({pipeline: this}), "", []);
     rootTransform.fullLabel = "";
