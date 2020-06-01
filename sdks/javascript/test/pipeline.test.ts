@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import { Pipeline, ParDo, DoFn, PTransform, Impulse } from '../src/index'
+import { Pipeline, ParDo, DoFn, PTransform, Impulse, Create } from '../src/index'
 import { PCollection } from '../src/pcollection';
 
 describe('Pipeline', () => {
@@ -82,6 +82,12 @@ describe('Pipeline', () => {
       }
     }
     p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
+    expect(p.serialize().toObject()).toMatchSnapshot();
+  });
+
+  it('with create and print', () => {
+    let p = new Pipeline();
+    p.apply({ transform: new Create({ pipeline: p, values: ["a", "b", "c"] }) })
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   // it('with pipeline operator', () => {

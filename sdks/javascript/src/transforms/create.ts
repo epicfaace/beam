@@ -18,6 +18,9 @@
 
 import { PTransform } from './ptransform'
 import { Pipeline } from '../pipeline';
+import { PValue } from '../pcollection/pvalue';
+import { Impulse } from './impulse';
+import { FlatMap } from './flatmap';
 
 /*
  * A transform that creates a PCollection from an iterable.
@@ -31,7 +34,15 @@ export class Create extends PTransform {
     this.values = values;
   }
 
-  label() {
-    return "Create";
+  expand(input: PValue) {
+    const { pipeline } = input;
+    return input.apply({
+      transform: new Impulse({ pipeline })
+    }).apply({
+      transform: FlatMap({
+        func: () => this.values,
+        pipeline
+      })
+    });
   }
 }

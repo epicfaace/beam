@@ -35,10 +35,6 @@ export class Impulse extends PTransform {
     return new PCollection({ pipeline: input.pipeline });
   }
 
-  label() {
-    return "Create";
-  }
-
   getWindowing() {
     return new Windowing(new GlobalWindows());
   }

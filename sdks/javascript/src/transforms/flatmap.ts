@@ -16,34 +16,12 @@
  * limitations under the License.
  */
 
-import { FunctionSpec } from './function-spec'
-import { CUSTOM_JS_DOFN_URN } from '../model/urns'
 
-export class DoFn extends FunctionSpec {
-  constructor() {
-    super()
-    // TODO: allow passing in function here.
-  }
+import { CallableWrapperDoFn } from '../specs/dofn'
+import { ParDo } from './pardo';
+import { Pipeline } from '../pipeline';
 
-  _urn() {
-    return CUSTOM_JS_DOFN_URN
-  }
-
-  _payload() {
-    // Call function by doing new Function("return " + this.toString())()(args)
-    return this.process.toString();
-  }
-
-  process(): any {
-    throw new Error('Needs to be implemented in subclasses')
-  }
-
-  // TODO: add setup, start_bundle, finish_bundle, teardown.
-}
-
-export class CallableWrapperDoFn extends DoFn {
-  constructor(func: () => any) {
-    super();
-    this.process = func;
-  }
-}
+export const FlatMap = ({func, pipeline}: { func: () => any, pipeline: Pipeline}) => new ParDo({
+  doFn: new CallableWrapperDoFn(func),
+  pipeline
+})
