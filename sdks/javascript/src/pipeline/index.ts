@@ -69,7 +69,8 @@ export class Pipeline {
    * @param {PValue} Input for the PTransform, typically a PCollection.
    * @returns {Pipeline_} Serialized pipeline proto
    */
-  apply({transform, label, pvalueish}: {transform: PTransform, label?: string, pvalueish?: PValueish}) {
+  apply(transformClass: typeof PTransform, { label, pvalueish, ...props}: {label?: string, pvalueish?: PValueish, [x: string]: any} = {}) {
+    const transform = new transformClass({...props, pipeline: this});
     const fullLabel = [this._currentTransform().fullLabel, (label || transform.label())].filter(e => e !== "").join("/");
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");

@@ -32,14 +32,14 @@ export class PValue {
   }
 
   /**
-   * Applies a transform or callable to a PValue.
+   * Applies a transform to a PValue.
 
     The method will insert the pvalue as the argument for pvalueish, then
     call the pipeline.apply() method with this modified argument list.
    * @param opts 
    */
-  apply({transform, label}: {transform: PTransform, label?: string}) {
-    return this.pipeline.apply({transform, label, pvalueish: this});
+  apply(transformClass: typeof PTransform, { label, pvalueish, ...props}: {label?: string, [x: string]: any} = {}) {
+    return this.pipeline.apply(transformClass, {...props, label, pvalueish: this});
   }
 
   serialize(): any {

@@ -37,20 +37,6 @@ import { Pipeline } from '../pipeline';
 export class PipelineRunner {
 
   /**
-   * Run the given transform or callable with this runner.
-   * Can be await'ed to wait until completion.
-   * @param {PTransform} transform PTransform to run
-   * @param {PipelineOptions} options Pipeline options
-   */
-  async run(transform: PTransform | Pipeline, options: PipelineOptions) {
-    const p = new Pipeline(this, options);
-    if (transform instanceof PTransform) {
-      p.apply({transform});
-    }
-    return p.run();
-  }
-
-  /**
    * Runs the entire pipeline.
    * @param {Pipeline} pipeline Pipeline to run
    * @param {PipelineOptions} options Pipeline options 

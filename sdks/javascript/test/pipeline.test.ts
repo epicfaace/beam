@@ -32,19 +32,19 @@ describe('Pipeline', () => {
   });
   it('with one transform', () => {
     let p = new Pipeline();
-    p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "custom label"});
+    p.apply(ParDo, { doFn: new DoFn(), label: "custom label"});
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   it('with multiple subtransforms', () => {
     let p = new Pipeline();
     
-    let pcoll = p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "A" });
+    let pcoll = p.apply(ParDo, { doFn: new DoFn(), label: "A"});
     
-      pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "B-1"})
-      .apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "C-1"});
+      pcoll.apply(ParDo, { doFn: new DoFn(), label: "B-1"})
+      .apply(ParDo, { doFn: new DoFn(), label: "C-1"});
 
-      pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "B-2"})
-      .apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "C-2"});
+      pcoll.apply(ParDo, { doFn: new DoFn(), label: "B-2"})
+      .apply(ParDo, { doFn: new DoFn(), label: "C-2"});
     // console.error(pcoll.serialize().toObject());
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
@@ -54,12 +54,12 @@ describe('Pipeline', () => {
         
     class CustomTransform extends PTransform {
       expand(pcoll: PCollection) {
-        return pcoll.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "nested subtransform 1"});
+        return pcoll.apply(ParDo, { doFn: new DoFn(), label: "nested subtransform 1"});
       }
     }
-    p.apply({ transform: new ParDo({ doFn: new DoFn(), pipeline: p }), label: "test"});
+    p.apply(ParDo, { doFn: new DoFn(), label: "test"});
 
-      p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
+      p.apply(CustomTransform, { label: "custom transform" })
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
@@ -70,7 +70,7 @@ describe('Pipeline', () => {
         return pcoll;
       }
     }
-    p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
+    p.apply(CustomTransform, { label: "custom transform" })
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
@@ -78,16 +78,16 @@ describe('Pipeline', () => {
     let p = new Pipeline();
     class CustomTransform extends PTransform {
       expand(pcoll: PCollection) {
-        return pcoll.apply({ transform: new Impulse({ pipeline: p}) });
+        return pcoll.apply(Impulse);
       }
     }
-    p.apply({ transform: new CustomTransform({ pipeline: p }), label: "custom transform" })
+    p.apply(CustomTransform, { label: "custom transform" })
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
   it('with create and print', () => {
     let p = new Pipeline();
-    p.apply({ transform: new Create({ pipeline: p, values: ["a", "b", "c"] }) })
+    p.apply(Create, { values: ["a", "b", "c"] });
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
   // it('with pipeline operator', () => {

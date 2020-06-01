@@ -50,6 +50,16 @@ Object {
         },
       ],
       Array [
+        "ref_BytesCoder_BytesCoder_17",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+      Array [
         "ref_BytesCoder_BytesCoder_3",
         Object {
           "componentCoderIdsList": Array [],
@@ -90,6 +100,16 @@ Object {
         },
       ],
       Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_19",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+      Array [
         "ref_GlobalWindowCoder_GlobalWindowCoder_5",
         Object {
           "componentCoderIdsList": Array [],
@@ -113,12 +133,12 @@ Object {
         },
       ],
       Array [
-        "ref_PCollection_PCollection_16",
+        "ref_PCollection_PCollection_20",
         Object {
           "coderId": "TODO",
           "displayDataList": Array [],
           "isBounded": 2,
-          "uniqueName": "ref_PCollection_PCollection_16",
+          "uniqueName": "ref_PCollection_PCollection_20",
           "windowingStrategyId": "TODO",
         },
       ],
@@ -141,6 +161,62 @@ Object {
             "ref_AppliedPTransform_Create_2",
           ],
           "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_Create/FlatMap/ParDo_16",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_11",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_20",
+            ],
+          ],
+          "spec": Object {
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function () { return _this.values; }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "urn": "beam:transform:pardo:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "Create/FlatMap/ParDo",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_Create/FlatMap_12",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [
+            Array [
+              "0",
+              "ref_PCollection_PCollection_11",
+            ],
+          ],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PCollection_PCollection_20",
+            ],
+          ],
+          "spec": Object {
+            "payload": "function (input) {
+        return input.apply(pardo_1.ParDo, {
+            doFn: new dofn_1.CallableWrapperDoFn(this.func)
+        });
+    }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_Create/FlatMap/ParDo_16",
+          ],
+          "uniqueName": "Create/FlatMap",
         },
       ],
       Array [
@@ -169,31 +245,6 @@ Object {
         },
       ],
       Array [
-        "ref_AppliedPTransform_Create/ParDo_12",
-        Object {
-          "displayDataList": Array [],
-          "environmentId": "",
-          "inputsMap": Array [
-            Array [
-              "0",
-              "ref_PCollection_PCollection_11",
-            ],
-          ],
-          "outputsMap": Array [
-            Array [
-              "None",
-              "ref_PCollection_PCollection_16",
-            ],
-          ],
-          "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function () { return _this.values; }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
-            "urn": "beam:transform:pardo:v1",
-          },
-          "subtransformsList": Array [],
-          "uniqueName": "Create/ParDo",
-        },
-      ],
-      Array [
         "ref_AppliedPTransform_Create_2",
         Object {
           "displayDataList": Array [],
@@ -202,27 +253,21 @@ Object {
           "outputsMap": Array [
             Array [
               "None",
-              "ref_PCollection_PCollection_16",
+              "ref_PCollection_PCollection_20",
             ],
           ],
           "spec": Object {
             "payload": "function (input) {
         var _this = this;
-        var pipeline = input.pipeline;
-        return input.apply({
-            transform: new impulse_1.Impulse({ pipeline: pipeline })
-        }).apply({
-            transform: flatmap_1.FlatMap({
-                func: function () { return _this.values; },
-                pipeline: pipeline
-            })
+        return input.apply(impulse_1.Impulse).apply(flatmap_1.FlatMap, {
+            func: function () { return _this.values; }
         });
     }",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
             "ref_AppliedPTransform_Create/Impulse_7",
-            "ref_AppliedPTransform_Create/ParDo_12",
+            "ref_AppliedPTransform_Create/FlatMap_12",
           ],
           "uniqueName": "Create",
         },
@@ -231,6 +276,38 @@ Object {
     "windowingStrategiesMap": Array [
       Array [
         "ref_Windowing_Windowing_14",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_Windowing_Windowing_18",
         Object {
           "accumulationMode": 1,
           "allowedLateness": 0,
@@ -483,7 +560,7 @@ Object {
           ],
           "spec": Object {
             "payload": "function (pcoll) {
-                return pcoll.apply({ transform: new index_1.ParDo({ doFn: new index_1.DoFn(), pipeline: p }), label: \\"nested subtransform 1\\" });
+                return pcoll.apply(index_1.ParDo, { doFn: new index_1.DoFn(), label: \\"nested subtransform 1\\" });
             }",
             "urn": "beam:transform:javascript:v1",
           },
@@ -1334,7 +1411,7 @@ Object {
           ],
           "spec": Object {
             "payload": "function (pcoll) {
-                return pcoll.apply({ transform: new index_1.Impulse({ pipeline: p }) });
+                return pcoll.apply(index_1.Impulse);
             }",
             "urn": "beam:transform:javascript:v1",
           },

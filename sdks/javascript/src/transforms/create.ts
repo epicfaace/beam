@@ -28,21 +28,15 @@ import { FlatMap } from './flatmap';
  */
 export class Create extends PTransform {
   values: any[];
-  
+
   constructor({ values, ...parentProps }: { values: any[], pipeline: Pipeline }) {
     super(parentProps);
     this.values = values;
   }
 
   expand(input: PValue) {
-    const { pipeline } = input;
-    return input.apply({
-      transform: new Impulse({ pipeline })
-    }).apply({
-      transform: FlatMap({
-        func: () => this.values,
-        pipeline
-      })
+    return input.apply(Impulse).apply(FlatMap, {
+      func: () => this.values
     });
   }
 }

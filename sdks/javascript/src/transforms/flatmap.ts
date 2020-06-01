@@ -20,8 +20,21 @@
 import { CallableWrapperDoFn } from '../specs/dofn'
 import { ParDo } from './pardo';
 import { Pipeline } from '../pipeline';
+import { PTransform } from './ptransform';
+import { PValue } from '../pcollection/pvalue';
 
-export const FlatMap = ({func, pipeline}: { func: () => any, pipeline: Pipeline}) => new ParDo({
-  doFn: new CallableWrapperDoFn(func),
-  pipeline
-})
+
+export class FlatMap extends PTransform {
+  func: (e?: any) => any;
+
+  constructor({ func, ...parentProps }: { func: (e?: any) => any, pipeline: Pipeline }) {
+    super(parentProps);
+    this.func = func;
+  }
+
+  expand(input: PValue) {
+    return input.apply(ParDo, {
+      doFn: new CallableWrapperDoFn(this.func)
+    });
+  }
+}

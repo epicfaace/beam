@@ -26,13 +26,8 @@ describe('Runner', () => {
         console.log("test hello world " + element.constructor.name );
       }
     }
-    p.apply({
-      transform: new Impulse({ pipeline: p })
-    }).apply({
-      transform: new ParDo({
-        doFn: new CustomDoFn(),
-        pipeline: p
-      })
+    p.apply(Impulse).apply(ParDo, {
+      doFn: new CustomDoFn(),
     });
     await p.run();
   });
