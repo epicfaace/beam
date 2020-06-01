@@ -81,7 +81,6 @@ export class Pipeline {
     } else {
       transformClassOrFn = transformClassOrFn as PTransformExpandFn;
       transform = new CallableWrapperPTransform({ func: transformClassOrFn, pipeline: this });
-      console.error('yea')
     }
 
     const fullLabel = [this._currentTransform().fullLabel, (label || transform.label())].filter(e => e !== "").join("/");

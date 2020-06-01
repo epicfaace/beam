@@ -104,3 +104,22 @@ describe('Pipeline', () => {
   //   expect(1 + 1).toEqual(2);
   // });
 })
+
+
+/*
+
+https://2ality.com/2011/12/fake-operator-overloading.html
+
+p |> Beam.createTransform(Create, {"label": "label 1"} )
+
+(
+  p
+  |> "test" >> Create(["a", "b", "c"])
+)
+
+p.apply(Create, {
+  "label": "label 1"
+})
+
+
+*/

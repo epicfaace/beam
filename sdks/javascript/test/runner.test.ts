@@ -16,18 +16,16 @@
  * limitations under the License.
  */
 
-import { Pipeline, ParDo, DoFn, Impulse } from '../src/index'
+import { Pipeline, ParDo, Impulse } from '../src/index'
 
 describe('Runner', () => {
   it('run simple dofn', async () => {
     let p = new Pipeline();
-    class CustomDoFn extends DoFn {
-      process(element: any) {
-        console.log("test hello world " + element.constructor.name );
-      }
+    function process(element: any) {
+      console.log("test hello world " + element.constructor.name );
     }
     p.apply(Impulse).apply(ParDo, {
-      doFn: new CustomDoFn(),
+      doFn: process
     });
     await p.run();
   });

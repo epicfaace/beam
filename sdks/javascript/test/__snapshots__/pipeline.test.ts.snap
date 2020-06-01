@@ -95,7 +95,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (e) { return e; }",
+            "payload": "function (pcoll) { return pcoll; }",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [],

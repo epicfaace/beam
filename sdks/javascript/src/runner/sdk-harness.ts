@@ -16,35 +16,9 @@
  * limitations under the License.
  */
 
-import { FunctionSpec } from './function-spec'
-import { CUSTOM_JS_DOFN_URN } from '../model/urns'
+/**
+ * SDK harness for use with the Fn API.
+ */
+export class SDKHarness {
 
-export type DoFnProcessFn = typeof DoFn.prototype.process;
-export class DoFn extends FunctionSpec {
-  constructor() {
-    super()
-    // TODO: allow passing in function here.
-  }
-
-  _urn() {
-    return CUSTOM_JS_DOFN_URN
-  }
-
-  _payload() {
-    // Call function by doing new Function("return " + this.toString())()(args)
-    return this.process.toString();
-  }
-
-  process(_element: any): any {
-    throw new Error('Needs to be implemented in subclasses')
-  }
-
-  // TODO: add setup, start_bundle, finish_bundle, teardown.
-}
-
-export class CallableWrapperDoFn extends DoFn {
-  constructor(func: (e?: any) => any) {
-    super();
-    this.process = func;
-  }
 }

@@ -19,7 +19,7 @@
 import { ParDoPayload } from '../model/generated/beam_runner_api_pb'
 import urns from '../model/urns'
 import { PTransform } from './ptransform'
-import { DoFn } from '../specs/dofn'
+import { DoFn, CallableWrapperDoFn, DoFnProcessFn } from '../specs/dofn'
 import { PCollection } from '../pcollection'
 import { PValue } from '../pcollection/pvalue'
 import { Pipeline } from '../pipeline'
@@ -27,9 +27,16 @@ import { Pipeline } from '../pipeline'
 export class ParDo extends PTransform {
   doFn: DoFn
 
-  constructor({ doFn, ...parentProps }: { doFn: DoFn, pipeline: Pipeline }) {
+  constructor({ doFn, ...parentProps }: { doFn: DoFn | DoFnProcessFn, pipeline: Pipeline }) {
     super(parentProps);
-    this.doFn = doFn;
+
+    // Create appropriate DoFn, based on whether the input is an actual
+    // instance of DoFn class or just a process function.
+    if (doFn instanceof DoFn) {
+      this.doFn = doFn;
+    } else {
+      this.doFn = new CallableWrapperDoFn(doFn);
+    }
   }
 
   _urn(): string {
