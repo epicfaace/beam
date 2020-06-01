@@ -16,24 +16,24 @@
  * limitations under the License.
  */
 
-import { Coder as CoderProto } from '../model/generated/beam_runner_api_pb';
-import { FunctionSpec } from '../specs/function-spec';
+import { Pipeline, ParDo, DoFn, Impulse } from '../src/index'
 
-export class CoderSpec extends FunctionSpec {
-  _payload() {
-    return null;
-  }
-}
-
-export class Coder {
-  spec: CoderSpec = new CoderSpec();
-
-  ref: string = "";
-  
-  serialize() {
-    const pb = new CoderProto();
-    pb.setSpec(this.spec.serialize());
-    // pb.setComponentCoderIdsList([]); // TODO fix this
-    return pb;
-  }
-}
+describe('Runner', () => {
+  it('run simple dofn', async () => {
+    let p = new Pipeline();
+    class CustomDoFn extends DoFn {
+      process(element: any) {
+        console.log("test hello world " + element.constructor.name );
+      }
+    }
+    p.apply({
+      transform: new Impulse({ pipeline: p })
+    }).apply({
+      transform: new ParDo({
+        doFn: new CustomDoFn(),
+        pipeline: p
+      })
+    });
+    await p.run();
+  });
+})

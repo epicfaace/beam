@@ -21,12 +21,21 @@ import { GlobalWindows, Windowing } from '../windowing';
 import { PValueish } from '../pipeline';
 import { PBegin } from '../pcollection/pvalue';
 import { PCollection } from '../pcollection';
+import urns from '../model/urns';
 
 /*
  * Impulse primitive.
  * @extends PTransform
  */
 export class Impulse extends PTransform {
+
+  _urn() {
+    return urns.StandardPTransforms.Primitives.IMPULSE;
+  }
+
+  _payload() {
+    return "";
+  }
 
   expand(input: PValueish) {
     if (!(input instanceof PBegin)) {

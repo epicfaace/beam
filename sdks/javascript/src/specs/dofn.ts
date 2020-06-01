@@ -34,7 +34,7 @@ export class DoFn extends FunctionSpec {
     return this.process.toString();
   }
 
-  process(): any {
+  process(_element: any): any {
     throw new Error('Needs to be implemented in subclasses')
   }
 

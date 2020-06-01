@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import { FunctionSpec as FunctionSpec_ } from '../model/generated/beam_runner_api_pb'
+import { FunctionSpec as FunctionSpecProto } from '../model/generated/beam_runner_api_pb'
 
 /**
  * A base class for classes that can be serialized to
@@ -46,7 +46,7 @@ export class FunctionSpec {
    * @return {FunctionSpec_} The generated protobuf.
    */
   serialize() {
-    const spec = new FunctionSpec_()
+    const spec = new FunctionSpecProto();
     spec.setUrn(this._urn())
     if (this._payload() !== null) {
       spec.setPayload(this._payload() as string);

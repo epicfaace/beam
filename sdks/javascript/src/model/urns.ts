@@ -23,6 +23,7 @@ export default {
   StandardPTransforms: {
     Primitives: {
       PAR_DO: "beam:transform:pardo:v1",
+      IMPULSE: "beam:transform:impulse:v1"
       // RESHUFFLE: "beam:transform:reshuffle:v1"
     }
   },

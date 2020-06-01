@@ -161,13 +161,8 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (input) {
-        if (!(input instanceof pvalue_1.PBegin)) {
-            throw new Error(\\"Input to Impulse transfer must be a PBegin\\");
-        }
-        return new pcollection_1.PCollection({ pipeline: input.pipeline });
-    }",
-            "urn": "beam:transform:javascript:v1",
+            "payload": "",
+            "urn": "beam:transform:impulse:v1",
           },
           "subtransformsList": Array [],
           "uniqueName": "Create/Impulse",
@@ -191,7 +186,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () { return _this.values; }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function () { return _this.values; }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -467,9 +462,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -513,9 +506,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -802,9 +793,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -852,9 +841,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -879,9 +866,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -906,9 +891,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -933,9 +916,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1185,9 +1166,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "beam:dofn:javascript:v1,,function () {
-        throw new Error('Needs to be implemented in subclasses');
-    }",
+            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1334,13 +1313,8 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (input) {
-        if (!(input instanceof pvalue_1.PBegin)) {
-            throw new Error(\\"Input to Impulse transfer must be a PBegin\\");
-        }
-        return new pcollection_1.PCollection({ pipeline: input.pipeline });
-    }",
-            "urn": "beam:transform:javascript:v1",
+            "payload": "",
+            "urn": "beam:transform:impulse:v1",
           },
           "subtransformsList": Array [],
           "uniqueName": "custom transform/Impulse",
