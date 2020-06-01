@@ -35,6 +35,117 @@ Object {
 }
 `;
 
+exports[`Pipeline with a functional ptransform 1`] = `
+Object {
+  "components": Object {
+    "codersMap": Array [
+      Array [
+        "ref_BytesCoder_BytesCoder_3",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:bytes:v1",
+          },
+        },
+      ],
+      Array [
+        "ref_GlobalWindowCoder_GlobalWindowCoder_5",
+        Object {
+          "componentCoderIdsList": Array [],
+          "spec": Object {
+            "payload": "",
+            "urn": "beam:coder:global_window:v1",
+          },
+        },
+      ],
+    ],
+    "environmentsMap": Array [],
+    "pcollectionsMap": Array [],
+    "transformsMap": Array [
+      Array [
+        "ref_AppliedPTransform_AppliedPTransform_1",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [],
+          "spec": Object {
+            "payload": "function (_input) {
+        throw new Error(\\"Must be implemented by subclasses\\");
+    }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [
+            "ref_AppliedPTransform_custom transform_2",
+          ],
+          "uniqueName": "",
+        },
+      ],
+      Array [
+        "ref_AppliedPTransform_custom transform_2",
+        Object {
+          "displayDataList": Array [],
+          "environmentId": "",
+          "inputsMap": Array [],
+          "outputsMap": Array [
+            Array [
+              "None",
+              "ref_PBegin_PBegin_6",
+            ],
+          ],
+          "spec": Object {
+            "payload": "function (e) { return e; }",
+            "urn": "beam:transform:javascript:v1",
+          },
+          "subtransformsList": Array [],
+          "uniqueName": "custom transform",
+        },
+      ],
+    ],
+    "windowingStrategiesMap": Array [
+      Array [
+        "ref_Windowing_Windowing_4",
+        Object {
+          "accumulationMode": 1,
+          "allowedLateness": 0,
+          "assignsToOneWindow": true,
+          "closingBehavior": 1,
+          "environmentId": "",
+          "mergeStatus": 1,
+          "ontimebehavior": 1,
+          "outputTime": 1,
+          "trigger": Object {
+            "afterAll": undefined,
+            "afterAny": undefined,
+            "afterEach": undefined,
+            "afterEndOfWindow": undefined,
+            "afterProcessingTime": undefined,
+            "afterSynchronizedProcessingTime": undefined,
+            "always": undefined,
+            "elementCount": undefined,
+            "never": undefined,
+            "orFinally": undefined,
+            "pb_default": Object {},
+            "repeat": undefined,
+          },
+          "windowCoderId": "TODO",
+          "windowFn": Object {
+            "payload": "",
+            "urn": "beam:window_fn:global_windows:v1",
+          },
+        },
+      ],
+    ],
+  },
+  "displayDataList": Array [],
+  "requirementsList": Array [],
+  "rootTransformIdsList": Array [
+    "ref_AppliedPTransform_AppliedPTransform_1",
+  ],
+}
+`;
+
 exports[`Pipeline with create and print 1`] = `
 Object {
   "components": Object {

@@ -17,7 +17,7 @@
  */
 
 import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
-import { PTransform } from '../transforms/ptransform'
+import { PTransform, PTransformExpandFn, CallableWrapperPTransform } from '../transforms/ptransform'
 import { PValue } from '../pcollection/pvalue'
 import { PipelineContext } from './pipeline-context';
 import { AppliedPTransform } from './applied-ptransform';
@@ -69,8 +69,21 @@ export class Pipeline {
    * @param {PValue} Input for the PTransform, typically a PCollection.
    * @returns {Pipeline_} Serialized pipeline proto
    */
-  apply(transformClass: typeof PTransform, { label, pvalueish, ...props}: {label?: string, pvalueish?: PValueish, [x: string]: any} = {}) {
-    const transform = new transformClass({...props, pipeline: this});
+  apply(transformClassOrFn: typeof PTransform | PTransformExpandFn, { label, pvalueish, ...props}: {label?: string, pvalueish?: PValueish, [x: string]: any} = {}) {
+    
+    // Create appropriate transform, based on whether the input is an actual
+    // PTransform class or just an expand function.
+    let transform;
+    if (transformClassOrFn.prototype.extractInputPValues) {
+      transformClassOrFn = transformClassOrFn as typeof PTransform;
+      transform = new transformClassOrFn({...props, pipeline: this});
+
+    } else {
+      transformClassOrFn = transformClassOrFn as PTransformExpandFn;
+      transform = new CallableWrapperPTransform({ func: transformClassOrFn, pipeline: this });
+      console.error('yea')
+    }
+
     const fullLabel = [this._currentTransform().fullLabel, (label || transform.label())].filter(e => e !== "").join("/");
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");

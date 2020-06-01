@@ -23,6 +23,8 @@ import { PValue } from '../pcollection/pvalue'
 import { BytesCoder } from '../coder/bytes';
 import { Windowing, GlobalWindows } from '../windowing';
 
+export type PTransformExpandFn = typeof PTransform.prototype.expand
+
 export class PTransform extends FunctionSpec {
   pipeline: Pipeline;
   constructor({ pipeline }: { pipeline: Pipeline }) {
@@ -82,5 +84,15 @@ export class PTransform extends FunctionSpec {
       return pvalue;
     }
     return [dictTupleLeaves(pvalue)];
+  }
+}
+
+/**
+ * Allows constructing a PTransform from a single given process function.
+ */
+export class CallableWrapperPTransform extends PTransform {
+  constructor({func, ...otherProps}: {func: PTransformExpandFn, pipeline: Pipeline}) {
+    super(otherProps);
+    this.expand = func;
   }
 }

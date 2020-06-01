@@ -18,6 +18,7 @@
 
 import { Pipeline } from '../pipeline';
 import { PTransform } from '../transforms';
+import { PTransformExpandFn } from '../transforms/ptransform';
 
 /**
  * Base class for PCollection.
@@ -38,8 +39,8 @@ export class PValue {
     call the pipeline.apply() method with this modified argument list.
    * @param opts 
    */
-  apply(transformClass: typeof PTransform, { label, pvalueish, ...props}: {label?: string, [x: string]: any} = {}) {
-    return this.pipeline.apply(transformClass, {...props, label, pvalueish: this});
+  apply(transformClassOrFn: typeof PTransform | PTransformExpandFn, { label, pvalueish, ...props}: {label?: string, [x: string]: any} = {}) {
+    return this.pipeline.apply(transformClassOrFn, {...props, label, pvalueish: this});
   }
 
   serialize(): any {

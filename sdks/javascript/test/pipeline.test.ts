@@ -74,6 +74,13 @@ describe('Pipeline', () => {
     expect(p.serialize().toObject()).toMatchSnapshot();
   });
 
+  it('with a functional ptransform', () => {
+    let p = new Pipeline();
+    const customTransform = (pcoll: PCollection) => pcoll;
+    p.apply(customTransform, { label: "custom transform" })
+    expect(p.serialize().toObject()).toMatchSnapshot();
+  });
+
   it('with ptransform with impulse', () => {
     let p = new Pipeline();
     class CustomTransform extends PTransform {
