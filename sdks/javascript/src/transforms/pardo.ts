@@ -16,13 +16,14 @@
  * limitations under the License.
  */
 
-import { ParDoPayload } from '../model/generated/beam_runner_api_pb'
+import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import urns from '../model/urns'
 import { PTransform } from './ptransform'
 import { DoFn, CallableWrapperDoFn, DoFnProcessFn } from '../specs/dofn'
 import { PCollection } from '../pcollection'
 import { PValue } from '../pcollection/pvalue'
 import { Pipeline } from '../pipeline'
+import { PipelineContext } from '../pipeline/pipeline-context'
 
 export class ParDo extends PTransform {
   doFn: DoFn
@@ -44,12 +45,10 @@ export class ParDo extends PTransform {
   }
 
   _payload() {
-    const payload = new ParDoPayload()
+    const payload = new beam_runner_api_pb.ParDoPayload()
     payload.setDoFn(this.doFn.serialize(this.pipeline.context));
-    // TODO: should we really stringify, or could we just use payload.serialize() ?
-    // console.error(toString);
-    // TODO: Fix this
-    return ""; // payload.serializeBinary();
+    // TODO: serialize doFn imports properly
+    return payload.serializeBinary();
   }
 
   expand(input: PValue) {

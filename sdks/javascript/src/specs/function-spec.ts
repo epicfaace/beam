@@ -51,13 +51,14 @@ export class FunctionSpec {
     spec.setUrn(this._urn())
     if (this._payload() !== null) {
       // Need to encode string representation of function to bytes.
-      // if (typeof this._payload() === "string") {
+      if (typeof this._payload() === "string") {
         const enc = new TextEncoder();
         const buf = enc.encode(this._payload()!).buffer;
         spec.setPayload(new Uint8Array(buf));
-      // } else {
-      //   spec.setPayload(this._payload() as any);
-      // }
+      } else {
+        // If it's already serialized (for example, a Uint8Array -- see ParDo._payload)
+        spec.setPayload(this._payload() as any);
+      }
     }
     return spec
   }

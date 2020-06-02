@@ -43,7 +43,7 @@ describe.only('Portable runner', () => {
       })
     );
     function process(element: any) {
-      console.log('test hello world ' + element.constructor.name);
+      console.log('test hello world it worked! ' + element.constructor.name);
     }
     p.apply(Impulse).apply(ParDo, {
       doFn: process,
@@ -67,7 +67,7 @@ describe.only('Portable runner', () => {
  jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/contents/home
 ./gradlew :runners:spark:job-server:runShadow
 
-
+cd sdks/javascript
 yarn test runner --watch
 
 */
