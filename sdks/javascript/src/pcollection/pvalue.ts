@@ -19,6 +19,7 @@
 import { Pipeline } from '../pipeline';
 import { PTransform } from '../transforms';
 import { PTransformExpandFn } from '../transforms/ptransform';
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 /**
  * Base class for PCollection.
@@ -43,7 +44,7 @@ export class PValue {
     return this.pipeline.apply(transformClassOrFn, {...props, label, pvalueish: this});
   }
 
-  serialize(): any {
+  serialize(_context: PipelineContext): any {
     return null;
     // throw new Error("Should be implemented by PCollection");
   }

@@ -18,6 +18,7 @@
 
 import beam_runner_api_pb from "../model/generated/beam_runner_api_pb";
 import { PValue } from './pvalue';
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 /**
  * A multiple values (potentially huge) container.
@@ -26,12 +27,12 @@ export class PCollection extends PValue {
   bounded = true;
   tag = "None";
   
-  serialize() {
+  serialize(context: PipelineContext) {
     let pb = new beam_runner_api_pb.PCollection();
     pb.setUniqueName(this.ref); // 14Create/Impulse.None
-    pb.setCoderId("TODO"); // ref_Coder_BytesCoder_1
+    pb.setCoderId(Object.keys(context.coders)[0]); // ref_Coder_BytesCoder_1
     pb.setIsBounded(beam_runner_api_pb.IsBounded.Enum.BOUNDED);
-    pb.setWindowingStrategyId("TODO"); // ref_Windowing_Windowing_1
+    pb.setWindowingStrategyId(Object.keys(context.windowingStrategies)[0]); // ref_Windowing_Windowing_1
     return pb;
   }
 }

@@ -17,6 +17,7 @@
  */
 
 import { FunctionSpec as FunctionSpecProto } from '../model/generated/beam_runner_api_pb'
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 /**
  * A base class for classes that can be serialized to
@@ -37,7 +38,7 @@ export class FunctionSpec {
    * Get the payload of this object.
    * @return {string} The object's payload.
    */
-  _payload(): string {
+  _payload(): string | null {
     throw new Error('Needs to be implemented in subclasses')
   }
 
@@ -45,14 +46,18 @@ export class FunctionSpec {
    * Serialize this object to a protobuf.
    * @return {FunctionSpec_} The generated protobuf.
    */
-  serialize() {
+  serialize(_context: PipelineContext) {
     const spec = new FunctionSpecProto();
     spec.setUrn(this._urn())
     if (this._payload() !== null) {
-      const enc = new TextEncoder();
-      const buf = enc.encode(this._payload()).buffer;
-      spec.setPayload(new Uint8Array(buf));
-      // spec.setPayload(this._payload() as string);
+      // Need to encode string representation of function to bytes.
+      // if (typeof this._payload() === "string") {
+        const enc = new TextEncoder();
+        const buf = enc.encode(this._payload()!).buffer;
+        spec.setPayload(new Uint8Array(buf));
+      // } else {
+      //   spec.setPayload(this._payload() as any);
+      // }
     }
     return spec
   }

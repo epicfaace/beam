@@ -22,6 +22,7 @@ import urns from '../model/urns';
 import { DefaultTrigger } from '../trigger';
 import { GlobalWindowCoder } from '../coder/global';
 import { Coder } from '../coder';
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 class WindowFunction extends FunctionSpec {
   _payload() {
@@ -55,14 +56,14 @@ export class Windowing {
     return this.windowFn.getWindowCoder();
   }
 
-  serialize() {
+  serialize(context: PipelineContext) {
     const pb = new WindowingStrategy();
     const windowFn = new GlobalWindows();
     const trigger = new DefaultTrigger();
-    pb.setWindowFn(windowFn.serialize());
+    pb.setWindowFn(windowFn.serialize(context));
     pb.setMergeStatus(MergeStatus.Enum.NON_MERGING);
-    pb.setWindowCoderId("TODO");
-    pb.setTrigger(trigger.serialize());
+    pb.setWindowCoderId(Object.keys(context.coders)[0]);
+    pb.setTrigger(trigger.serialize(context));
     pb.setAccumulationMode(AccumulationMode.Enum.DISCARDING);
     pb.setOutputTime(OutputTime.Enum.END_OF_WINDOW);
     pb.setClosingBehavior(ClosingBehavior.Enum.EMIT_ALWAYS);

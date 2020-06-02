@@ -38,4 +38,9 @@ export class PipelineOptions {
       this.environmentType = environmentType;
     }
   }
+
+  toObject() {
+    const { runner, jobEndpoint, environmentType } = this;
+    return { runner, jobEndpoint, environmentType };
+  }
 }

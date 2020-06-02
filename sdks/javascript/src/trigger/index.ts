@@ -17,9 +17,10 @@
  */
 
 import { Trigger } from '../model/generated/beam_runner_api_pb';
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 export class DefaultTrigger {
-  serialize() {
+  serialize(_context: PipelineContext) {
     const pb = new Trigger();
     pb.setDefault(new Trigger.Default());
     return pb;

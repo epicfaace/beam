@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import { Pipeline, ParDo, Impulse } from '../src/index'
+import { Pipeline, ParDo, Impulse } from '../src/index';
 import { PipelineOptions } from '../src/pipeline/pipeline-options';
 import { PortableRunner } from '../src/runner/portable-runner';
 
@@ -24,29 +24,38 @@ describe.skip('Direct runner', () => {
   it('run simple dofn', async () => {
     let p = new Pipeline();
     function process(element: any) {
-      console.log("test hello world " + element.constructor.name );
+      console.log('test hello world ' + element.constructor.name);
     }
     p.apply(Impulse).apply(ParDo, {
-      doFn: process
+      doFn: process,
     });
     await p.run();
   });
-})
+});
 
-describe('Portable runner', () => {
+describe.only('Portable runner', () => {
   it('run simple dofn', async () => {
-    let p = new Pipeline(new PipelineOptions({
-      runner: new PortableRunner(),
-      jobEndpoint: "localhost:8099",
-      environmentType: "LOOPBACK"
-    }));
-    // function process(element: any) {
-    //   console.log("test hello world " + element.constructor.name );
-    // }
-    // p.apply(Impulse).apply(ParDo, {
-    //   doFn: process
-    // });
-    p.apply(Impulse);
+    let p = new Pipeline(
+      new PipelineOptions({
+        runner: new PortableRunner(),
+        jobEndpoint: 'localhost:8099',
+        environmentType: 'LOOPBACK',
+      })
+    );
+    function process(element: any) {
+      console.log('test hello world ' + element.constructor.name);
+    }
+    p.apply(Impulse).apply(ParDo, {
+      doFn: process,
+    });
+    // p.apply(Impulse);
+    
+    /*
+    TODO:
+    java.lang.IllegalArgumentException: Transform ref_AppliedPTransform_ParDo_8 has unknown URN beam:transform:pardo:v1
+        at org.apache.beam.runners.spark.translation.SparkBatchPortablePipelineTranslator.urnNotFound(SparkBatchPortablePipelineTranslator.java:145)
+        
+    */
     await p.run();
   });
 });
@@ -58,5 +67,7 @@ describe('Portable runner', () => {
  jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/contents/home
 ./gradlew :runners:spark:job-server:runShadow
 
+
+yarn test runner --watch
 
 */

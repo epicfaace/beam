@@ -18,6 +18,7 @@
 
 import { Coder as CoderProto } from '../model/generated/beam_runner_api_pb';
 import { FunctionSpec } from '../specs/function-spec';
+import { PipelineContext } from '../pipeline/pipeline-context';
 
 export class CoderSpec extends FunctionSpec {
   _payload() {
@@ -30,9 +31,9 @@ export class Coder {
 
   ref: string = "";
   
-  serialize() {
+  serialize(context: PipelineContext) {
     const pb = new CoderProto();
-    pb.setSpec(this.spec.serialize());
+    pb.setSpec(this.spec.serialize(context));
     // pb.setComponentCoderIdsList([]); // TODO fix this
     return pb;
   }

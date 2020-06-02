@@ -46,3 +46,4 @@ export default {
 
 export const CUSTOM_JS_DOFN_URN = "beam:dofn:javascript:v1";
 export const CUSTOM_JS_TRANSFORM_URN = "beam:transform:javascript:v1";
+export const GENERIC_COMPOSITE_TRANSFORM_URN = "beam:transform:generic_composite:v1";

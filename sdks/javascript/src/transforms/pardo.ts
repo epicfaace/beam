@@ -45,9 +45,11 @@ export class ParDo extends PTransform {
 
   _payload() {
     const payload = new ParDoPayload()
-    payload.setDoFn(this.doFn.serialize());
+    payload.setDoFn(this.doFn.serialize(this.pipeline.context));
     // TODO: should we really stringify, or could we just use payload.serialize() ?
-    return JSON.stringify(payload.toObject());
+    // console.error(toString);
+    // TODO: Fix this
+    return ""; // payload.serializeBinary();
   }
 
   expand(input: PValue) {

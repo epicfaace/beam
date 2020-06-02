@@ -15,9 +15,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [],
@@ -71,9 +69,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -95,7 +91,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (pcoll) { return pcoll; }",
+            "payload": "ZnVuY3Rpb24gKHBjb2xsKSB7IHJldHVybiBwY29sbDsgfQ==",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [],
@@ -129,7 +125,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -236,21 +232,21 @@ Object {
       Array [
         "ref_PCollection_PCollection_11",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_11",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_20",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_20",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
     ],
@@ -263,9 +259,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -292,7 +286,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function () { return _this.values; }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -317,11 +311,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (input) {
-        return input.apply(pardo_1.ParDo, {
-            doFn: new dofn_1.CallableWrapperDoFn(this.func)
-        });
-    }",
+            "payload": "ZnVuY3Rpb24gKGlucHV0KSB7CiAgICAgICAgcmV0dXJuIGlucHV0LmFwcGx5KHBhcmRvXzEuUGFyRG8sIHsKICAgICAgICAgICAgZG9GbjogbmV3IGRvZm5fMS5DYWxsYWJsZVdyYXBwZXJEb0ZuKHRoaXMuZnVuYykKICAgICAgICB9KTsKICAgIH0=",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -368,12 +358,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (input) {
-        var _this = this;
-        return input.apply(impulse_1.Impulse).apply(flatmap_1.FlatMap, {
-            func: function () { return _this.values; }
-        });
-    }",
+            "payload": "ZnVuY3Rpb24gKGlucHV0KSB7CiAgICAgICAgdmFyIF90aGlzID0gdGhpczsKICAgICAgICByZXR1cm4gaW5wdXQuYXBwbHkoaW1wdWxzZV8xLkltcHVsc2UpLmFwcGx5KGZsYXRtYXBfMS5GbGF0TWFwLCB7CiAgICAgICAgICAgIGZ1bmM6IGZ1bmN0aW9uICgpIHsgcmV0dXJuIF90aGlzLnZhbHVlczsgfQogICAgICAgIH0pOwogICAgfQ==",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -410,7 +395,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -442,7 +427,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -474,7 +459,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -506,7 +491,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -593,21 +578,21 @@ Object {
       Array [
         "ref_PCollection_PCollection_17",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_17",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_7",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_7",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
     ],
@@ -620,9 +605,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -650,7 +633,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -670,9 +653,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (pcoll) {
-                return pcoll.apply(index_1.ParDo, { doFn: new index_1.DoFn(), label: \\"nested subtransform 1\\" });
-            }",
+            "payload": "ZnVuY3Rpb24gKHBjb2xsKSB7CiAgICAgICAgICAgICAgICByZXR1cm4gcGNvbGwuYXBwbHkoaW5kZXhfMS5QYXJEbywgeyBkb0ZuOiBuZXcgaW5kZXhfMS5Eb0ZuKCksIGxhYmVsOiAibmVzdGVkIHN1YnRyYW5zZm9ybSAxIiB9KTsKICAgICAgICAgICAgfQ==",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -694,7 +675,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -728,7 +709,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -760,7 +741,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -792,7 +773,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -919,51 +900,51 @@ Object {
       Array [
         "ref_PCollection_PCollection_12",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_12",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_17",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_17",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_22",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_22",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_27",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_27",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
       Array [
         "ref_PCollection_PCollection_7",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_7",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
     ],
@@ -981,7 +962,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -996,9 +977,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -1029,7 +1008,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1054,7 +1033,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1079,7 +1058,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1104,7 +1083,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1138,7 +1117,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1170,7 +1149,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1202,7 +1181,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1234,7 +1213,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1266,7 +1245,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1313,11 +1292,11 @@ Object {
       Array [
         "ref_PCollection_PCollection_7",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_7",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
     ],
@@ -1330,9 +1309,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -1354,7 +1331,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "{\\"doFn\\":{\\"urn\\":\\"beam:dofn:javascript:v1\\",\\"payload\\":\\"function (_element) {\\\\n        throw new Error('Needs to be implemented in subclasses');\\\\n    }\\"},\\"sideInputsMap\\":[],\\"stateSpecsMap\\":[],\\"timerFamilySpecsMap\\":[],\\"restrictionCoderId\\":\\"\\",\\"requestsFinalization\\":false,\\"requiresTimeSortedInput\\":false,\\"requiresStableInput\\":false}",
+            "payload": "",
             "urn": "beam:transform:pardo:v1",
           },
           "subtransformsList": Array [],
@@ -1388,7 +1365,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1455,11 +1432,11 @@ Object {
       Array [
         "ref_PCollection_PCollection_11",
         Object {
-          "coderId": "TODO",
+          "coderId": "ref_BytesCoder_BytesCoder_3",
           "displayDataList": Array [],
           "isBounded": 2,
           "uniqueName": "ref_PCollection_PCollection_11",
-          "windowingStrategyId": "TODO",
+          "windowingStrategyId": "ref_Windowing_Windowing_4",
         },
       ],
     ],
@@ -1472,9 +1449,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -1521,9 +1496,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (pcoll) {
-                return pcoll.apply(index_1.Impulse);
-            }",
+            "payload": "ZnVuY3Rpb24gKHBjb2xsKSB7CiAgICAgICAgICAgICAgICByZXR1cm4gcGNvbGwuYXBwbHkoaW5kZXhfMS5JbXB1bHNlKTsKICAgICAgICAgICAgfQ==",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -1559,7 +1532,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1591,7 +1564,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",
@@ -1644,9 +1617,7 @@ Object {
           "inputsMap": Array [],
           "outputsMap": Array [],
           "spec": Object {
-            "payload": "function (_input) {
-        throw new Error(\\"Must be implemented by subclasses\\");
-    }",
+            "payload": "ZnVuY3Rpb24gKF9pbnB1dCkgewogICAgICAgIHRocm93IG5ldyBFcnJvcigiTXVzdCBiZSBpbXBsZW1lbnRlZCBieSBzdWJjbGFzc2VzIik7CiAgICB9",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [
@@ -1668,9 +1639,7 @@ Object {
             ],
           ],
           "spec": Object {
-            "payload": "function (pcoll) {
-                return pcoll;
-            }",
+            "payload": "ZnVuY3Rpb24gKHBjb2xsKSB7CiAgICAgICAgICAgICAgICByZXR1cm4gcGNvbGw7CiAgICAgICAgICAgIH0=",
             "urn": "beam:transform:javascript:v1",
           },
           "subtransformsList": Array [],
@@ -1704,7 +1673,7 @@ Object {
             "pb_default": Object {},
             "repeat": undefined,
           },
-          "windowCoderId": "TODO",
+          "windowCoderId": "ref_BytesCoder_BytesCoder_3",
           "windowFn": Object {
             "payload": "",
             "urn": "beam:window_fn:global_windows:v1",

@@ -47,7 +47,7 @@ export class Pipeline {
     this.runner = options.runner;
     this.options = options;
 
-    const rootTransform = new AppliedPTransform(undefined, new PTransform({pipeline: this}), "", []);
+    const rootTransform = new AppliedPTransform(undefined, new PTransform({pipeline: this}), "ttt", []);
     rootTransform.fullLabel = "";
     rootTransform.ref = this.context.createUniqueRef(rootTransform);
     this.transformsStack.push(rootTransform);
@@ -82,7 +82,7 @@ export class Pipeline {
       transform = new CallableWrapperPTransform({ func: transformClassOrFn, pipeline: this });
     }
 
-    const fullLabel = [this._currentTransform().fullLabel, (label || transform.label())].filter(e => e !== "").join("/");
+    const fullLabel = [this._currentTransform().fullLabel, (label || transform.constructor.name)].filter(e => e !== "").join("/");
     if (this.appliedLabels.has(fullLabel)) {
       throw new Error("label is already in use");
     }
@@ -122,20 +122,21 @@ export class Pipeline {
    * @returns {Pipeline_} Serialized pipeline proto
    */
   serialize() {
+    const { context } = this;
     const pipeline = new beam_runner_api_pb.Pipeline();
 
     const components = new beam_runner_api_pb.Components();
     for (let ref in this.context.transforms) {
-      components.getTransformsMap().set(ref, this.context.transforms[ref].serialize());
+      components.getTransformsMap().set(ref, this.context.transforms[ref].serialize(context));
     }
     for (let ref in this.context.pcollections) {
-      components.getPcollectionsMap().set(ref, this.context.pcollections[ref].serialize());
+      components.getPcollectionsMap().set(ref, this.context.pcollections[ref].serialize(context));
     }
     for (let ref in this.context.windowingStrategies) {
-      components.getWindowingStrategiesMap().set(ref, this.context.windowingStrategies[ref].serialize());
+      components.getWindowingStrategiesMap().set(ref, this.context.windowingStrategies[ref].serialize(context));
     }
     for (let ref in this.context.coders) {
-      components.getCodersMap().set(ref, this.context.coders[ref].serialize());
+      components.getCodersMap().set(ref, this.context.coders[ref].serialize(context));
     }
     // TODO: other parts of context, like coders
     pipeline.setComponents(components);
