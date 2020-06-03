@@ -20,16 +20,15 @@ import { PipelineRunner } from './pipeline-runner';
 import { PipelineOptions } from '../pipeline/pipeline-options';
 import { Pipeline } from '../pipeline';
 import { AppliedPTransform } from '../pipeline/applied-ptransform';
-import { StartWorkerRequest } from '../model/generated/beam_fn_api_pb';
-import { CommitManifestRequest } from '../model/generated/beam_artifact_api_pb';
+import { StartWorkerRequest, StartWorkerResponse } from '../model/generated/beam_fn_api_pb';
 import { PrepareJobRequest, PrepareJobResponse, RunJobRequest, RunJobResponse, DescribePipelineOptionsRequest, DescribePipelineOptionsResponse } from '../model/generated/beam_job_api_pb';
-import { JobServiceClient } from '../model/generated/beam_job_api_grpc_pb';
-import { ArtifactStagingServiceClient } from '../model/generated/beam_artifact_api_grpc_pb'
-import grpc from "grpc";
-import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
-// import { promisify } from "util";
+import { WorkerPool } from "./worker/worker-pool";
 
-const credentials = grpc.credentials.createInsecure();
+import { ArtifactStagingServiceClient } from '../model/generated/beam_artifact_api_grpc_pb'
+import { ExternalEnvironment } from '../environment';
+import { JobServiceHandle } from './job-service-handle';
+import { ClientReadableStream } from 'grpc';
+
 
 /**
  * A BeamRunner that executes Python pipelines via the Beam Job API.
@@ -57,61 +56,49 @@ export class PortableRunner extends PipelineRunner {
 
     // From JobServiceHandle
 
-    let jobServiceClient = new JobServiceClient(jobEndpoint, credentials);
+    const pool = new WorkerPool();
+    const port = pool.start();
+    // TODO: clean this up
+    (pipeline.context.environments[Object.keys(pipeline.context.environments)[0]] as ExternalEnvironment).url = `localhost:${port}`;
 
+    let jobServiceHandle = new JobServiceHandle({ jobEndpoint });
 
-    // 0. Get options
-    const describeOptionsRequest = new DescribePipelineOptionsRequest();
-    const describeOptionsResponse: DescribePipelineOptionsResponse = await new Promise((resolve, reject) =>
-    jobServiceClient.describePipelineOptions(describeOptionsRequest, (err, res) => err ? reject(err): resolve(res))
-    );
-    // console.error("describeOptionsResponse", describeOptionsResponse.toObject());
-    let optionsDict: any = {};
-    // for (let item of describeOptionsResponse.getOptionsList()) {
-    //   optionsDict[item.getName()] = item.getDefaultValue();
-    // }
-    // optionsDict.job_endpoint = jobEndpoint;
-    // console.error(optionsDict);
     // 1. Prepare
-    const prepareJobRequest = new PrepareJobRequest();
-    prepareJobRequest.setJobName("job");
-    prepareJobRequest.setPipeline(pipeline.serialize());
-    prepareJobRequest.setPipelineOptions(Struct.fromJavaScript(optionsDict));
-    // client.prepare(prepareJobRequest, (response) => {
-    //   console.error(response);
-    // })
-    const prepareJobResponse: PrepareJobResponse = await new Promise((resolve, reject) =>
-      jobServiceClient.prepare(prepareJobRequest, (err, res) => err ? reject(err): resolve(res))
-    );
-    // const prepareJobResponse = await promisify(client.prepare).apply(client, [prepareJobRequest]);
-    console.log(prepareJobResponse.getPreparationId())
-    
+    const prepareJobResponse = await jobServiceHandle.prepare({ pipeline });
+
     // 2. Stage
-    let artifactClient = new ArtifactStagingServiceClient(jobEndpoint, credentials);
-    // const stageJobResponse = await new Promise((resolve) => 
-    //   artifactClient.
-    // )
-    // const prepareJobResponse = await promisify(client.prepare).bind(client)(prepareJobRequest);
-    if (false) console.error(artifactClient);
+    await jobServiceHandle.stage();
 
     // 3. Run
-    const runJobRequest = new RunJobRequest();
-    runJobRequest.setPreparationId(prepareJobResponse.getPreparationId());
-    runJobRequest.setRetrievalToken("");
-    // runJobRequest.setRetrievalToken(); // need if we have artifacts staged
-    const runJobResponse: RunJobResponse = await new Promise((resolve, reject) =>
-      jobServiceClient.run(runJobRequest, (err, res) => err ? reject(err): resolve(res))
-    );
-    // console.error(runJobResponse);
+    const {runJobResponse, stateStream, messageStream} = await jobServiceHandle.run({
+      preparationId: prepareJobResponse.getPreparationId(),
+      retrievalToken: ""
+    });
+    console.error(runJobResponse.getJobId());
+
+    const streamToPromise = (stream: ClientReadableStream<any>, label: string) => new Promise((resolve, reject) => {
+      stream.on('end', function() {
+        console.error(label + " stream end");
+        resolve();
+      });
+      stream.on('error', function(e) {
+        console.error(label + " stream error", e)
+        reject(e);
+      });
+      stream.on('status', function(status) {
+        console.error(label + " stream status", status);
+      });
+      stream.on('data', function(status) {
+        console.error(label + " stream data", status);
+      });
+    });
+
+    await Promise.all([
+      streamToPromise(stateStream, "stateStream"),
+      streamToPromise(messageStream, "messageStream")
+    ]);
 
 
-    // Stage
-
-    // Run
-
-    // CommitManifestRequest
-    
-    console.log("todo implement");
   }
 
   async runTransform(_transformNode: AppliedPTransform, _options?: PipelineOptions) {

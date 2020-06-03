@@ -40,6 +40,8 @@ export class Environment extends FunctionSpec {
 }
 
 export class ExternalEnvironment extends Environment {
+  url: string = "INVALID";
+
   _urn() {
     return urns.StandardEnvironments.EXTERNAL;
   }
@@ -47,7 +49,7 @@ export class ExternalEnvironment extends Environment {
   _payload() {
     const payload = new beam_runner_api_pb.ExternalPayload();
     const descriptor = new ApiServiceDescriptor();
-    descriptor.setUrl("localhost:8080"); // TODO: actually start a gRPC server here.
+    descriptor.setUrl(this.url);
     payload.setEndpoint(descriptor);
     return payload.serializeBinary();
   }
