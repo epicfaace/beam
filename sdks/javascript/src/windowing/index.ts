@@ -70,6 +70,8 @@ export class Windowing {
     pb.setAllowedLateness(0);
     pb.setOntimebehavior(OnTimeBehavior.Enum.FIRE_ALWAYS);
     pb.setAssignsToOneWindow(true);
+    // TODO: only conditionally set environment id
+    pb.setEnvironmentId(Object.keys(context.environments)[0]);
     return pb;
   }
 }

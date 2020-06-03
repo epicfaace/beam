@@ -24,6 +24,7 @@ import { AppliedPTransform } from './applied-ptransform';
 import { PipelineOptions } from './pipeline-options';
 import { PipelineRunner } from '../runner/pipeline-runner';
 import { PBegin } from '../pcollection/pvalue';
+import { ExternalEnvironment } from '../environment';
 
 export type PValueish = PValue | Pipeline
 
@@ -51,6 +52,10 @@ export class Pipeline {
     rootTransform.fullLabel = "";
     rootTransform.ref = this.context.createUniqueRef(rootTransform);
     this.transformsStack.push(rootTransform);
+
+    // TODO: don't hardcode which environment is created.
+    const environment = new ExternalEnvironment();
+    this.context.createUniqueRef(environment);
   }
 
   _currentTransform() {
@@ -138,7 +143,9 @@ export class Pipeline {
     for (let ref in this.context.coders) {
       components.getCodersMap().set(ref, this.context.coders[ref].serialize(context));
     }
-    // TODO: other parts of context, like coders
+    for (let ref in this.context.environments) {
+      components.getEnvironmentsMap().set(ref, this.context.environments[ref].serialize(context));
+    }
     pipeline.setComponents(components);
     pipeline.setRootTransformIdsList([this._rootTransform().ref]);
 

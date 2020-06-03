@@ -20,7 +20,8 @@ import beam_runner_api_pb from '../model/generated/beam_runner_api_pb'
 import { PTransform } from '../transforms/ptransform'
 import { PValue } from '../pcollection/pvalue';
 import { PipelineContext } from './pipeline-context';
-import { GENERIC_COMPOSITE_TRANSFORM_URN, CUSTOM_JS_TRANSFORM_URN } from '../model/urns';
+import { GENERIC_COMPOSITE_TRANSFORM_URN, CUSTOM_JS_TRANSFORM_URN, RUNNER_IMPLEMENTED_TRANSFORMS } from '../model/urns';
+
 
 /*
  * A transform node representing an instance of applying a PTransform
@@ -73,9 +74,9 @@ export class AppliedPTransform {
         // TODO: handle multiple outputs
         transform.getOutputsMap().set("None", this.outputs[i].ref);
       }
-      // TODO:
-      // setInputs
-      // setOutputs
+      if (RUNNER_IMPLEMENTED_TRANSFORMS.indexOf(this.transform._urn()) === -1) {
+        transform.setEnvironmentId(Object.keys(context.environments)[0]);
+      }
     } else {
       // is root transform
     }

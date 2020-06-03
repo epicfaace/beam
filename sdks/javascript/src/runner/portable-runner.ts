@@ -102,14 +102,14 @@ export class PortableRunner extends PipelineRunner {
     const runJobResponse: RunJobResponse = await new Promise((resolve, reject) =>
       jobServiceClient.run(runJobRequest, (err, res) => err ? reject(err): resolve(res))
     );
-    console.error(runJobResponse);
+    // console.error(runJobResponse);
 
 
     // Stage
 
     // Run
 
-    CommitManifestRequest
+    // CommitManifestRequest
     
     console.log("todo implement");
   }

@@ -38,7 +38,7 @@ export class FunctionSpec {
    * Get the payload of this object.
    * @return {string} The object's payload.
    */
-  _payload(): string | null {
+  _payload(): string | Uint8Array | null {
     throw new Error('Needs to be implemented in subclasses')
   }
 
@@ -53,7 +53,7 @@ export class FunctionSpec {
       // Need to encode string representation of function to bytes.
       if (typeof this._payload() === "string") {
         const enc = new TextEncoder();
-        const buf = enc.encode(this._payload()!).buffer;
+        const buf = enc.encode(this._payload()! as string).buffer;
         spec.setPayload(new Uint8Array(buf));
       } else {
         // If it's already serialized (for example, a Uint8Array -- see ParDo._payload)
