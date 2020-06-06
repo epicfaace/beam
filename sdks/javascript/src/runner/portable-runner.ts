@@ -76,23 +76,6 @@ export class PortableRunner extends PipelineRunner {
     });
     console.error(runJobResponse.getJobId());
 
-    const streamToPromise = (stream: ClientReadableStream<any>, label: string) => new Promise((resolve, reject) => {
-      stream.on('end', function() {
-        console.error(label + " stream end");
-        resolve();
-      });
-      stream.on('error', function(e) {
-        console.error(label + " stream error", e)
-        reject(e);
-      });
-      stream.on('status', function(status) {
-        console.error(label + " stream status", status);
-      });
-      stream.on('data', function(status) {
-        console.error(label + " stream data", status);
-      });
-    });
-
     await Promise.all([
       streamToPromise(stateStream, "stateStream"),
       streamToPromise(messageStream, "messageStream")
@@ -105,3 +88,22 @@ export class PortableRunner extends PipelineRunner {
     throw new Error("todo implement");
   }
 }
+
+export const streamToPromise = (stream: ClientReadableStream<any>, label: string, includeData = true) => new Promise((resolve, reject) => {
+  if (includeData) {
+    stream.on('data', function(data) {
+      console.error(label + " stream data", data);
+    });
+  }
+  stream.on('end', function() {
+    console.error(label + " stream end");
+    resolve();
+  });
+  stream.on('error', function(e) {
+    console.error(label + " stream error", e)
+    reject(e);
+  });
+  stream.on('status', function(status) {
+    console.error(label + " stream status", status);
+  });
+});

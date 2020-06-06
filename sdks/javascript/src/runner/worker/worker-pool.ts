@@ -19,6 +19,7 @@
 import grpc from "grpc";
 import { BeamFnExternalWorkerPoolService, BeamFnExternalWorkerPoolClient, IBeamFnExternalWorkerPoolService } from '../../model/generated/beam_fn_api_grpc_pb';
 import beam_fn_api_pb from '../../model/generated/beam_fn_api_pb';
+import { SDKHarness } from './sdk-harness';
 
 const serverCredentials = grpc.ServerCredentials.createInsecure();
 
@@ -33,16 +34,29 @@ export class WorkerPool {
     });
     const port = server.bind("0.0.0.0:0", serverCredentials);
     this.port = port;
+    server.start();
+    console.error("port", port);
     return port;
   }
 
   startWorker(call: any, callback: any) {
     const request = call.request as beam_fn_api_pb.StartWorkerRequest;
-    throw request.toObject();
+    const sdkHarness = new SDKHarness({
+      controlAddress: request.getControlEndpoint()!.getUrl(),
+      workerId: request.getWorkerId()
+    });
+    sdkHarness.run();
     const response = new beam_fn_api_pb.StartWorkerResponse();
     callback(null, response);
   }
 
+  /**
+   * Stop worker. No need to do anything for async-based workers.
+   * If we add process-based workers, we will need to kill the
+   * workers' processes.
+   * @param call 
+   * @param callback 
+   */
   stopWorker(call: any, callback: any) {
     const request = call.request as beam_fn_api_pb.StopWorkerRequest;
     const response = new beam_fn_api_pb.StopWorkerResponse();
