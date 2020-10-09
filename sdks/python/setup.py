@@ -334,11 +334,11 @@ setuptools.setup(
         'nose.plugins.0.10': [
             'beam_test_plugin = test_config:BeamTestPlugin',
         ]},
-    cmdclass={
-        'build_py': generate_protos_first(build_py),
-        'develop': generate_protos_first(develop),
-        'egg_info': generate_protos_first(egg_info),
-        'test': generate_protos_first(test),
-        'mypy': generate_protos_first(mypy),
-    },
+#     cmdclass={
+#         'build_py': generate_protos_first(build_py),
+#         'develop': generate_protos_first(develop),
+#         'egg_info': generate_protos_first(egg_info),
+#         'test': generate_protos_first(test),
+#         'mypy': generate_protos_first(mypy),
+#     },
 )
